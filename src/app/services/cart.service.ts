@@ -70,6 +70,7 @@ export class CartService {
   }
   removeAll(): void{
     this.datas = []
+    this.saveData()
   }
   sendOrder(): void{
     this.removeAll()

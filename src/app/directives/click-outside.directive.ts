@@ -32,7 +32,6 @@ export class checkRangeValMinDirective implements OnInit {
   constructor(private el: ElementRef, private render: Renderer2, private control: NgControl) { 
   }
   ngOnInit(): void {
-    console.log(this.range.min)
       this.render.setAttribute(this.el.nativeElement, "min", this.range.min)
       this.render.setAttribute(this.el.nativeElement, "max", this.range.max)
   }

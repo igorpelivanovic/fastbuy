@@ -145,7 +145,6 @@ export class CartSectionsComponent implements OnInit, OnDestroy {
         postalCode: this.userData.address.postalCode
       }
     })
-    console.log(this.getCartFormGroup(['customerData', 'userData']).value)
   }
 
   private shippingData(): FormGroup{
@@ -188,12 +187,10 @@ export class CartSectionsComponent implements OnInit, OnDestroy {
 
   private sendOrder(): void{
     this.trimFormData()
-    let data = Object.assign({address: this.cartForm.value.customerData.userData}, {items: this.cartForm.value.items}, {shipping: this.cartForm.value.shipping})
     this.cartService.sendOrder()
   }
 
   formSubmit(): void{
-    console.log(this.cartForm.value.customerData.userData)
     this.document.defaultView?.scrollTo({
       top: 0,
       behavior: "smooth"

@@ -34,7 +34,6 @@ export class GridSystemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.products)
   }
   removeBrands():void{
     this.filterBoxService.removeBrands()
