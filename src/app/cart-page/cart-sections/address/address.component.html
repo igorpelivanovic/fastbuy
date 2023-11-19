@@ -1,0 +1,206 @@
+<div class="addressContainer">
+    <div class="labelContainer">
+        <button class="text-color-light-primary-light" type="button" (click)="deActiveAddress()">
+            <span class="icon">
+                <fa-icon [icon]="icon.faChevronLeft"></fa-icon>
+            </span>
+            <span class="title">
+                back to items
+            </span>
+        </button>
+        <h2>shipping address</h2>
+    </div>
+    <div class="addressItems" [formGroup]="formGroup">
+        <div class="addressOptions">
+            <div class="addressOption" *ngIf="userHasLogin">
+                <label for="userAddress">
+                    <input type="radio" name="hasUser" id="userAddress" [value]="true" formControlName="hasUser">
+                    <div class="indicatorContainer"></div>
+                    <div class="titleOption">
+                        <p>
+                            <span class="name text-color-light-secondText">
+                                {{userData.firstName | formatString: userData.lastName}}
+                            </span>
+                            <span class="address text-color-light-text-light">
+                                {{userData.address | formatAddress}}
+                            </span>
+                        </p>
+                    </div>
+                </label>
+            </div>
+            <div class="addressOption new">
+                <label for="newAddress">
+                    <input type="radio" name="hasUser" id="newAddress" [value]="false" formControlName="hasUser">
+                    <div class="indicatorContainer"></div>
+                    <div class="titleOption">
+                        <p>
+                            <span class="name text-color-light-secondText">
+                                add new address
+                            </span>
+                        </p>
+                    </div>
+                </label>
+                <div class="newAddressContianer" *ngIf="getFormControl('hasUser').value == false" [formGroup]="getFormGroup(['userData'])">
+                    <div class="inputsGridSystem">
+                        <div class="inputGridField firstName">
+                            <label for="firstName">
+                                <div class="labelContainer">
+                                    <span class="label text-color-light-text-light">first name</span>
+                                </div>
+                                <div class="inputContainer">
+                                    <input type="text" name="firstName" id="firstName" spellcheck="false" autocomplete="off" class="text-color-light-secondText" formControlName="firstName">
+                                    <div class="buttonsContainer" *ngIf="!getFormControl('firstName', ['userData']).hasError('required')">
+                                        <div class="buttonContainer">
+                                            <button type="button" class="text-color-light-secondText" (click)="clearFormControl('firstName', ['userData'])">
+                                                <span class="icon">
+                                                    <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <ng-container *ngIf="getFormControl('firstName', ['userData']).touched && getFormControl('firstName', ['userData']).invalid">
+                                        <app-error-message [errors]="getFormControl('firstName', ['userData']).errors"></app-error-message>
+                                    </ng-container>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="inputGridField lastName">
+                            <label for="lastName">
+                                <div class="labelContainer">
+                                    <span class="label text-color-light-text-light">last name</span>
+                                </div>
+                                <div class="inputContainer">
+                                    <input type="text" name="lastName" id="lastName" spellcheck="false"  class="text-color-light-secondText" formControlName="lastName">
+                                    <div class="buttonsContainer" *ngIf="!getFormControl('lastName', ['userData']).hasError('required')">
+                                        <div class="buttonContainer">
+                                            <button type="button" class="text-color-light-secondText" (click)="clearFormControl('lastName', ['userData'])">
+                                                <span class="icon">
+                                                    <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <ng-container *ngIf="getFormControl('lastName', ['userData']).touched && getFormControl('lastName', ['userData']).invalid">
+                                        <app-error-message [errors]="getFormControl('lastName', ['userData']).errors"></app-error-message>
+                                    </ng-container>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="inputGridField email">
+                            <label for="email">
+                                <div class="labelContainer">
+                                    <span class="label text-color-light-text-light">e-mail</span>
+                                </div>
+                                <div class="inputContainer">
+                                    <input type="email" name="email" id="email"  class="text-color-light-secondText" formControlName="email">
+                                    <div class="buttonsContainer" *ngIf="!getFormControl('email', ['userData']).hasError('required')">
+                                        <div class="buttonContainer">
+                                            <button type="button" class="text-color-light-secondText" (click)="clearFormControl('email', ['userData'])">
+                                                <span class="icon">
+                                                    <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <ng-container *ngIf="getFormControl('email', ['userData']).touched && getFormControl('email', ['userData']).invalid">
+                                        <app-error-message input="email" [errors]="getFormControl('email', ['userData']).errors"></app-error-message>
+                                    </ng-container>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="inputGridField phoneNumber">
+                            <label for="phoneNumber">
+                                <div class="labelContainer">
+                                    <span class="label text-color-light-text-light">phone number</span>
+                                </div>
+                                <div class="inputContainer">
+                                    <input type="text" name="phone" id="phoneNumber"  class="text-color-light-secondText" formControlName="phone">
+                                    <div class="buttonsContainer" *ngIf="!getFormControl('phone', ['userData']).hasError('required')">
+                                        <div class="buttonContainer">
+                                            <button type="button" class="text-color-light-secondText" (click)="clearFormControl('phone', ['userData'])">
+                                                <span class="icon">
+                                                    <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <ng-container *ngIf="getFormControl('phone', ['userData']).touched && getFormControl('phone', ['userData']).invalid">
+                                        <app-error-message input="phoneNumber" [errors]="getFormControl('phone', ['userData']).errors"></app-error-message>
+                                    </ng-container>
+                                </div>
+                            </label>
+                        </div>
+                        <ng-container [formGroup]="getFormGroup(['userData' ,'address'])">
+                            <div class="inputGridField streetAddress">
+                                <label for="streetAddress">
+                                    <div class="labelContainer">
+                                        <span class="label text-color-light-text-light">street address</span>
+                                    </div>
+                                    <div class="inputContainer">
+                                        <input type="text" name="address" id="streetAddress"  class="text-color-light-secondText" formControlName="address">
+                                        <div class="buttonsContainer" *ngIf="!getFormControl('address', ['userData', 'address']).hasError('required')">
+                                            <div class="buttonContainer">
+                                                <button type="button" class="text-color-light-secondText" (click)="clearFormControl('address', ['userData', 'address'])">
+                                                    <span class="icon">
+                                                        <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <ng-container *ngIf="getFormControl('address', ['userData', 'address']).touched && getFormControl('address', ['userData', 'address']).invalid">
+                                            <app-error-message [errors]="getFormControl('address', ['userData', 'address']).errors"></app-error-message>
+                                        </ng-container>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="inputGridField city">
+                                <label for="city">
+                                    <div class="labelContainer">
+                                        <span class="label text-color-light-text-light">city</span>
+                                    </div>
+                                    <div class="inputContainer">
+                                        <input type="text" name="city" id="city"  class="text-color-light-secondText" formControlName="city">
+                                        <div class="buttonsContainer" *ngIf="!getFormControl('city', ['userData', 'address']).hasError('required')">
+                                            <div class="buttonContainer">
+                                                <button type="button" class="text-color-light-secondText" (click)="clearFormControl('city', ['userData', 'address'])">
+                                                    <span class="icon">
+                                                        <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <ng-container *ngIf="getFormControl('city', ['userData', 'address']).touched && getFormControl('city', ['userData', 'address']).invalid">
+                                            <app-error-message [errors]="getFormControl('city', ['userData', 'address']).errors"></app-error-message>
+                                        </ng-container>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="inputGridField zip">
+                                <label for="streetAddress">
+                                    <div class="labelContainer">
+                                        <span class="label text-color-light-text-light">zip</span>
+                                    </div>
+                                    <div class="inputContainer">
+                                        <input type="text" name="postalCode" id="zip" class="text-color-light-secondText" formControlName="postalCode">
+                                        <div class="buttonsContainer" *ngIf="!getFormControl('postalCode', ['userData', 'address']).hasError('required')">
+                                            <div class="buttonContainer">
+                                                <button type="button" class="text-color-light-secondText" (click)="clearFormControl('postalCode', ['userData', 'address'])">
+                                                    <span class="icon">
+                                                        <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <ng-container *ngIf="getFormControl('postalCode', ['userData', 'address']).touched && getFormControl('postalCode', ['userData', 'address']).invalid">
+                                            <app-error-message input="postalCode" [errors]="getFormControl('postalCode', ['userData', 'address']).errors"></app-error-message>
+                                        </ng-container>
+                                    </div>
+                                </label>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

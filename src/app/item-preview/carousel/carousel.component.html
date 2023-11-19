@@ -1,0 +1,1 @@
+<img image *ngFor="let img of imagesUrl; let i = index" [ngClass]="{active: i == index}" [src]="img" [alt]="'image'+{i}">

@@ -1,0 +1,74 @@
+<div class="container singInPage">
+    <div class="content bg-color-light-backgorund" [@sliderFormContainer]="singInRender">
+        <div class="formsContainer">
+            <app-login-form (setStatusRequest)="requestStatus=$event" *ngIf="singInRender"></app-login-form>
+            <app-register-form (setStatusRequest)="requestStatus=$event" *ngIf="!singInRender"></app-register-form>
+            <div class="navigationContainer bg-color-light-primary" [@slideNavigation]="singInRender">
+                <div class="navigationContent singIn" *ngIf="singInRender">
+                    <div class="imgContainer bg-color-light-accent">
+                        <img src="./../../assets/logo-icon.svg" alt="logo">
+                    </div>
+                    <div class="messageContainer">
+                        <p class="mainMsg text-color-light-secondery">
+                            Hellow! Welcome to the Fast Buy shop
+                        </p>
+                        <p class="secondMsg">
+                            Don't have an account yet?
+                        </p>
+                    </div>
+                </div>
+                <div class="navigationContent singUp" *ngIf="!singInRender">
+                    <div class="imgContainer bg-color-light-accent">
+                        <img src="./../../assets/logo-icon.svg" alt="logo">
+                    </div>
+                    <div class="messageContainer">
+                        <p class="mainMsg text-color-light-secondery">
+                            Hellow! Welcome to the Fast Buy shop
+                        </p>
+                        <p class="secondMsg">
+                            If you have alredy an account
+                        </p>
+                    </div>
+                </div>
+                <div class="buttonContainer">
+                    <button class="bg-color-light-primary-light text-color-light-secondery" (click)="toggleFormRender()">
+                        <span class="title">
+                            {{singInRender ? "sing up" : "sing in"}}
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="navigationContainerMobile">
+            <div class="navigationContentContainer" *ngIf="!singInRender">
+                <div class="messageContainer text-color-light-text-light">
+                    <span class="msg">
+                        If you have alredy an account
+                    </span>
+                </div>
+                <div class="buttonContainer">
+                    <button (click)="toggleFormRender()">
+                        <span class="title text-color-light-text-primary">
+                            sing in
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="navigationContentContainer" *ngIf="singInRender">
+                <div class="messageContainer text-color-light-text-light">
+                    <span class="msg">
+                        Don't have an account yet?
+                    </span>
+                </div>
+                <div class="buttonContainer">
+                    <button (click)="toggleFormRender()">
+                        <span class="title text-color-light-text-primary">
+                            sing up
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-users-list *ngIf="hasListUsers && usersList.length > 0" [usersList]="usersList"></app-users-list>

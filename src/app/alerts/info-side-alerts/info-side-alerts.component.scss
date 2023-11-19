@@ -1,0 +1,73 @@
+@use 'sass:map';
+@import "../../../style/variables";
+
+:host{
+    position: fixed;
+    top: 0%;
+    right: 10px;
+    max-height: 100%;
+    padding-block: 170px 90px;
+    z-index: 10;
+}
+.alertSideContainer{
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 10px;
+    max-height: 100%;
+    .alertBox{
+        overflow: hidden;
+        position: relative;
+        border-radius: 5px;
+        width: 300px;
+        box-shadow: 0 2px 15px rgba(27, 28, 30, 0.3607843137);
+        .alertContent{
+            padding: 10px 20px;
+            display: flex;
+            gap: 10px;
+            .iconContainer{
+                flex: 0 35px;
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                fa-icon{
+                    display: flex;
+                }
+            }
+            .msgContainer{
+                align-self: center;
+                flex: 1 0px;
+                p.msg{
+                    font-weight: 500;
+                    font-size: .8em;
+                    &::first-letter{
+                        text-transform: capitalize;
+                    }
+                }
+            }
+        }
+        .progressContainer{
+            height: 4px;
+            width: 100%;
+            span.progress{
+                display: block;
+                width: 50%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+@keyframes progress{
+    from{
+        width: 0%;
+    }
+    to{
+        width: 100%;
+    }
+}

@@ -1,0 +1,17 @@
+<div class="alertSideContainer">
+    <div class="alertBox bg-color-light-accent text-color-light-secondery" *ngFor="let alert of alerts" @slideInFromRight>
+        <div class="alertContent">
+            <div class="iconContainer bg-color-light-primary-light">
+                <span class="icon">
+                    <fa-icon [icon]="icon(alert.type)"></fa-icon>
+                </span>
+            </div>
+            <div class="msgContainer">
+                <p class="msg">{{alert.message}}</p>
+            </div>
+        </div>
+        <div class="progressContainer">
+            <span class="progress bg-color-light-primary-light" appAddAnimationFullWidth [animationDuration]="alert.time"></span>
+        </div>
+    </div>
+</div>

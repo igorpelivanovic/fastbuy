@@ -1,0 +1,146 @@
+<div class="container accountPage bg-color-light-backgorund">
+    <ng-container *ngIf="!isLoading else sectionsTmp" >
+        <app-full-screen-loader></app-full-screen-loader>
+    </ng-container>
+    <ng-template #sectionsTmp>
+        <section class="left">
+            <div class="infoContainer">
+                <div class="bannerContainer bg-color-light-primary">
+                    <div class="banner text-color-light-secondery">
+                        <p class="value">{{userNameOfUser | initials}}</p>
+                    </div>
+                </div>
+                <div class="messageContainer">
+                    <p class="message">
+                        <span class="title text-color-light-secondText">hi</span>
+                        <span class="value  text-color-light-primary-light">{{userNameOfUser}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="navigationContainer">
+                <nav>
+                    <ul>
+                        <li>
+                            <button [ngClass]="currentTab == 0 ? 'text-color-light-primary' : 'text-color-light-text-light'" (click)="setActiveTab(0)" class="hover-text-color-light-primary-light">
+                                <span class="icon">
+                                    <fa-icon [icon]="icon.faFolder"></fa-icon>
+                                </span>
+                                <span class="title">general</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button [ngClass]="currentTab == 1 ? 'text-color-light-primary' : 'text-color-light-text-light'" (click)="setActiveTab(1)" class="hover-text-color-light-primary-light">
+                                <span class="icon">
+                                    <fa-icon [icon]="icon.faUser"></fa-icon>
+                                </span>
+                                <span class="title">account</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button [ngClass]="currentTab == 2 ? 'text-color-light-primary' : 'text-color-light-text-light'" (click)="setActiveTab(2)" class="hover-text-color-light-primary-light">
+                                <span class="icon">
+                                    <fa-icon [icon]="icon.faPhone"></fa-icon>
+                                </span>
+                                <span class="title">contact</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button [ngClass]="currentTab == 3 ? 'text-color-light-primary' : 'text-color-light-text-light'" (click)="setActiveTab(3)" class="hover-text-color-light-primary-light">
+                                <span class="icon">
+                                    <fa-icon [icon]="icon.faLocationDot"></fa-icon>
+                                </span>
+                                <span class="title">address</span>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="actionButtonContainer">
+                <div class="buttonContainer">
+                    <button class="text-color-light-text-light" (click)="singOut()">
+                        <span class="title">sing out</span>
+                        <span class="icon">
+                            <fa-icon [icon]="icon.faArrowRightFromBracket"></fa-icon>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section class="right">
+            <form [formGroup]="form" (ngSubmit)="submitForm()">
+                <div class="formContainer">
+                    <div class="tabLabelContainer text-color-light-secondText">
+                        <h2 [ngSwitch]="currentTab">
+                            <ng-template [ngSwitchCase]="0">
+                                <span class="icon">
+                                    <fa-icon [icon]="icon.faFolder"></fa-icon>
+                                </span>
+                                <span class="title">
+                                    general
+                                </span>
+                            </ng-template>
+                            <ng-template [ngSwitchCase]="1">
+                                <span class="icon">
+                                    <fa-icon [icon]="icon.faUser"></fa-icon>
+                                </span>
+                                <span class="title">
+                                    account
+                                </span>
+                            </ng-template>
+                            <ng-template [ngSwitchCase]="2">
+                                <span class="icon">
+                                    <fa-icon [icon]="icon.faPhone"></fa-icon>
+                                </span>
+                                <span class="title">
+                                    contact
+                                </span>
+                            </ng-template>
+                            <ng-template [ngSwitchCase]="3">
+                                <span class="icon">
+                                    <fa-icon [icon]="icon.faLocationDot"></fa-icon>
+                                </span>
+                                <span class="title">
+                                    address
+                                </span>
+                            </ng-template>
+                        </h2>
+                    </div>
+                    <div class="formTabsContainer" [@slideFormTabInOut]="currentTab" [ngSwitch]="currentTab">
+                        <ng-template [ngSwitchCase]="0">
+                            <app-general-form-tab [formGroup]="getFormGroup('general')"></app-general-form-tab>
+                        </ng-template>
+                        <ng-template [ngSwitchCase]="1">
+                            <app-account-form-tab [formGroup]="getFormGroup('account')"></app-account-form-tab>
+                        </ng-template>
+                        <ng-template [ngSwitchCase]="2">
+                            <app-contact-form-tab [formGroup]="getFormGroup('contact')"></app-contact-form-tab>
+                        </ng-template>
+                        <ng-template [ngSwitchCase]="3">
+                            <app-address-form-tab [formGroup]="getFormGroup('address')"></app-address-form-tab>
+                        </ng-template>
+                    </div>
+                    <div class="actionsFormContainer">
+                        <div class="buttonsContainer">
+                            <div class="buttonContainer">
+                                <button class="text-color-light-secondText" type="button" (click)="resetForm()">
+                                    <span class="title">reset</span>
+                                    <span class="icon">
+                                        <fa-icon [icon]="icon.faBan"></fa-icon>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="buttonContainer submitButton">
+                                <button class="bg-color-light-primary-light text-color-light-secondery" [disabled]="form.pristine || form.invalid">
+                                    <span class="title">update</span>
+                                    <span class="icon" [ngClass]="{animate: changeDataHttpSend}">
+                                        <fa-icon [icon]="icon.faRotate"></fa-icon>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </ng-template>
+</div>

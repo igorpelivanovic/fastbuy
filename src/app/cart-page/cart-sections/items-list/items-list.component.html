@@ -1,0 +1,131 @@
+<div class="itemsListContainer list">
+    <div class="labelContainer">
+        <p class="title">items list</p>
+        <p class="countItems text-color-light-primary-light">items {{countOfItems}}</p>
+    </div>
+    <div class="itemsTable">
+        <div class="itemsTableHead">
+            <div class="gridRow">
+                <div class="label">
+                    <p>product</p>
+                </div>
+                <div class="label center">
+                    <p>
+                        unit price
+                    </p>
+                </div>
+                <div class="label center">
+                    <p>
+                        quanity
+                    </p>
+                </div>
+                <div class="label center">
+                    <p>
+                        total
+                    </p>
+                </div>
+                <div class="label center">
+                    <p>
+                        remove
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="itemsTableBody">
+            <div class="itemsTableContainer">
+                <div class="gridRow" *ngFor="let item of arrayForm.controls; let i = index">
+                    <ng-container [formGroup]="getItemsArrFromControl(i)">
+                        <div class="gridCeil title">
+                            <div class="ceilData">
+                                <a [routerLink]="'/product/'+cartListItems[i].id">
+                                    <div class="imgContainer">
+                                        <img image [src]="cartListItems[i].thumbnail" [alt]="cartListItems[i].title">
+                                    </div>
+                                    <div class="descriptionContainer">
+                                        <div class="name text-color-light-secondText">
+                                            {{cartListItems[i].title}}
+                                        </div>
+                                        <div class="brand ">
+                                            <p class="title text-color-light-dark">brand:</p>
+                                            <p class="value text-color-light-secondText">{{cartListItems[i].brand}}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="gridCeil brand">
+                            <div class="ceilData">
+                                <div class="title">
+                                    <p>brand:</p>
+                                </div>
+                                <div class="value">
+                                    <p class="text-color-light-secondText">{{cartListItems[i].brand}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gridCeil price">
+                            <div class="ceilData">
+                                <div class="title">
+                                    <p>price:</p>
+                                </div>
+                                <div class="value">
+                                    <p class="oldPrice text-color-light-secondText">{{cartListItems[i].price | currency}}</p>
+                                    <p class="newPrice ">{{cartListItems[i].price | discountPercentage: cartListItems[i].discountPercentage | currency}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gridCeil quanity">
+                            <div class="ceilData">
+                                <div class="title">
+                                    <p>quanity:</p>
+                                </div>
+                                <div class="action">
+                                    <div class="buttonContainer">
+                                        <button class="text-color-light-secondText" type="button" (click)="decrementQuanity(i)">
+                                            <span class="icon">
+                                                <fa-icon [icon]="icon.faMinus"></fa-icon>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <div class="valueContainer">
+                                        <span class="value text-color-light-secondText">
+                                            {{item.value.quanity}}
+                                        </span>
+                                    </div>
+                                    <div class="buttonContainer">
+                                        <button class="text-color-light-secondText" type="button" (click)="incrementQuanity(i)">
+                                            <span class="icon">
+                                                <fa-icon [icon]="icon.faPlus"></fa-icon>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gridCeil totalPrice">
+                            <div class="ceilData">
+                                <p class="title">
+                                    Total:
+                                </p>
+                                <p class="value text-color-light-secondText">
+                                    {{ cartListItems[i].price | discountPercentage: cartListItems[i].discountPercentage | quanityTotalCost: cartListItems[i].quanity | currency}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="gridCeil remove">
+                            <div class="ceilData">
+                                <div class="buttonContainer">
+                                    <button type="button" class="text-color-light-text-light hover-text-color-light-secondText" (click)="removeProduct(i)">
+                                        <span class="icon">
+                                            <fa-icon [icon]="icon.faTrash"></fa-icon>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

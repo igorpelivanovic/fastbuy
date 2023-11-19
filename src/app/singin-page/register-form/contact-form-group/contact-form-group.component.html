@@ -1,0 +1,36 @@
+<div class="formTabContainer" [formGroup]="group">
+    <div class="inputsContainer">
+        <div class="inputContainer">
+            <div class="inputBox">
+                <label for="phoneNumber">
+                    <input type="text" placeholder="" class="text-color-light-secondText" name="phoneNumber" id="phoneNumber" formControlName="phone" required>
+                    <span class="label">phone number</span>
+                    <button class="clearInput text-color-light-secondText" type="button" *ngIf="!getControl('phone')?.hasError('required')" (click)="clearControl('phone')">
+                        <span class="icon">
+                            <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                        </span>
+                    </button>
+                </label>
+                <ng-container *ngIf="getControl('phone')?.touched && getControl('phone')?.invalid">
+                    <app-error-message input="phoneNumber"  [errors]="getControl('phone').errors"></app-error-message>
+                </ng-container>
+            </div>
+        </div>
+        <div class="inputContainer">
+            <div class="inputBox">
+                <label for="eMail">
+                    <input type="email" placeholder="" class="text-color-light-secondText" name="eMail" id="eMail" formControlName="email" required>
+                    <span class="label">e-mail</span>
+                    <button class="clearInput text-color-light-secondText" type="button" *ngIf="!getControl('email')?.hasError('required')" (click)="clearControl('email')">
+                        <span class="icon">
+                            <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                        </span>
+                    </button>
+                </label>
+                <ng-container *ngIf="getControl('email')?.touched && getControl('email')?.invalid">
+                    <app-error-message input="email" [errors]="getControl('email').errors"></app-error-message>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

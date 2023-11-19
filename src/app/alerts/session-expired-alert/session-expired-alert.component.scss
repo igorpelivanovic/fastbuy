@@ -1,0 +1,153 @@
+@use "sass:map";
+@import "./../../../style/variables";
+
+.alertsContainer{
+    .alertBox{
+        padding-block: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        position: relative;
+        .messageContainer{
+            .titleContainer{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                .iconContainer{
+                    span.icon{
+                        font-size: 2.2em;
+                        fa-icon{
+                            display: flex;
+                        }
+                    }
+                }
+                .messsageContainer{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 5px;
+                    text-align: center;
+                    h2{
+                        font-size: 1em;
+                        &::first-letter{
+                            text-transform: capitalize;
+                        }
+                    }
+                    p{
+                        font-size: .8em;
+                        font-weight: 500;
+                        &::first-letter{
+                            text-transform: capitalize;
+                        }
+                    }
+                }
+            }
+        }
+        .formContainer{
+            form{
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                .inputsContainer{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: stretch;
+                    gap: 20px;
+                    padding-bottom: 30px;
+                    position: relative;
+                    .inputContainer{
+                        border-radius: 6px;
+                        border-width: 1px;
+                        border-style: solid;
+                        label{
+                            position: relative;
+                            padding: 5px 10px;
+                            display: block;
+                            input{
+                                width: 100%;
+                                display: block;
+                                font-weight: 500;
+                                &::placeholder{
+                                    text-transform: capitalize;
+                                }
+                            }
+                            .buttonsContainer{
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                                height: 100%;
+                                padding-right: 10px;
+                                display: flex;
+                                align-items: center;
+                                gap: 8px;
+                                button{
+                                    cursor: pointer;
+                                    span.icon{
+                                        fa-icon{
+                                            display: flex;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .errorMsgContainer{
+                        position: absolute;
+                        bottom: 5px;
+                        left: 0;
+                        font-size: .8em;
+                        padding-inline: 5px;
+                        &::first-letter{
+                            text-transform: capitalize;
+                        }
+                    }
+                }
+                .actionsContainer{
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    .buttonContainer{
+                        flex: 0 0 100%;
+                        button{
+                            padding-block: 5px;
+                            border-radius: 10px;
+                            font-size: .85em;
+                            display: flex;
+                            width: 100%;
+                            justify-content: center;
+                            gap: 5px;
+                            font-weight: 500;
+                            align-items: center;
+                            cursor: pointer;
+                            span.title{
+                                text-transform: capitalize;
+                            }
+                            &:disabled{
+                                cursor: auto;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: map.get($brakePoints, "small")){
+    .alertsContainer{
+        .alertBox{
+            .formContainer{
+                form{
+                    .actionsContainer{
+                        flex-wrap: nowrap;
+                        gap: 30px;
+                        .buttonContainer{
+                            flex: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,113 @@
+@use "sass:map";
+@import "./../../../style/variables";
+
+.categoriesContainer{
+    display: none;
+    .container{
+        >nav>ul>li{
+            display: none;
+        }
+        nav{
+            padding-top: 5px;
+            width: 100%;
+            ul{
+                list-style: none;
+                display: flex;
+                li{
+                    &.categories{
+                        display: flex;
+                        position: relative;
+                        .allCategoriesContainer{
+                            max-height: 400px;
+                            overflow-y: scroll;
+                            box-shadow: 0 2px 15px #1b1c1e5c;
+                            position: absolute;
+                            z-index: -1;
+                            width: 100%;
+                            top: 100%;
+                            left: 0;
+                            border-radius: 0px 0px 6px 6px;
+                            padding: 0;
+                            padding: 0 5px 10px 5px;
+                            nav{
+                                ul{
+                                    flex-direction: column;
+                                    gap: 4px;
+                                    li{
+                                        border-radius: 5px;
+                                        overflow: hidden;
+                                        a{
+                                            border-radius: 0;
+                                            padding-block: 8px;
+                                            width: 100%;
+                                            font-size: .8em;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    >*{
+                        display: block;
+                        padding: 10px 20px;
+                        cursor: pointer;
+                        text-transform: capitalize;
+                        border-radius: 6px 6px 0px 0px;
+                        span.title{
+                            text-transform: capitalize;
+                        }
+                        span.arrow{
+                            transform: rotate(0deg);
+                            transition: .5s;
+                            &.rotate{
+                                transform: rotate(-180deg);
+                            }
+                        }
+                        
+                    }
+                    a{
+                        font-size: .9em;
+                        padding-inline: 25px;
+                    }
+                    button{
+                        display: flex;
+                        justify-content: space-between;
+                        width: 270px;
+                        gap: 15px;
+                        align-items: center;
+                        span.title{
+                            font-size: 1.1em;
+                            margin-inline: 0 auto ;
+                            font-weight: 500;
+                        }
+                        span fa-icon.burger{
+                            display: flex;
+                            font-size: 1.2em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+
+}
+
+@media (min-width: map.get($brakePoints, "medium")){
+    .categoriesContainer{
+        display: block;
+    }
+}
+@media (min-width: map.get($brakePoints, "large")){
+    .categoriesContainer{
+        .container{
+            nav{
+                ul{
+                    li{
+                        display: flex;
+                    }
+                }
+            }
+        }
+    }
+}

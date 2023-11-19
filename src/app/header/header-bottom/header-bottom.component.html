@@ -1,0 +1,87 @@
+<div class="headerBottom bg-color-light-secondAccent">
+    <div class="container">
+        <div class="hamburgerMenuBtnContianer">
+            <button (click)="showMenuContainer = true" class="text-color-light-secondery">
+                <span class="icon">
+                    <fa-icon [icon]="icon.faBars"></fa-icon>
+                </span>
+            </button>
+        </div>
+        <div class="logoContianer">
+            <div class="imgContainer">
+                <a [routerLink]="['home']">
+                    <img src="assets/logo.svg" alt="logo">
+                </a>
+            </div>
+        </div>
+        <div class="otherBtnsContainer">
+            <div class="btnContianer userProfile">
+                <a [routerLink]="['account']">
+                    <span class="icon">
+                        <fa-icon [icon]="icon.faUser"></fa-icon>
+                    </span>
+                </a>
+                <div class="containerOptions" *ngIf="hasUser">
+                    <div class="optinos bg-color-light-secondery-light">
+                        <ul>
+                            <li>
+                                <button class="text-color-light-primary-light" routerLink="/account">
+                                    <span class="title">
+                                        My profile
+                                    </span>
+                                </button>
+                            </li>
+                            <li>
+                                <button class="text-color-light-primary-light" (click)="singOutUser()">
+                                    <span class="title">
+                                        Sing out
+                                    </span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="btnContianer cart">
+                <a [routerLink]="['cart']">
+                    <span class="icon">
+                        <fa-icon [icon]="icon.faShoppingCart"></fa-icon>
+                    </span>
+                    <span class="countCart bg-color-light-primary-light" *ngIf="countCartItem > 0">
+                        {{countCartItem | cartCount}}
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="searchContianer">
+            <form [formGroup]="form" (ngSubmit)="submitForm()">
+                <label for="searchInput" class="bg-color-light-secondery">
+                    <div class="inputContainer bg-color-light-secondery">
+                        <span class="icon" class="text-color-light-secondText" >
+                            <fa-icon [icon]="icon.faMagnifyingGlass"></fa-icon>
+                        </span>
+                        <input type="text" class="text-color-light-secondText" name="searchInput" id="searchInput" autocomplete="off" spellcheck="false" placeholder="Search products..." formControlName="searchValue">
+                        <button *ngIf="form.get('searchValue')?.value.length > 0" (click)="form.reset({searchValue: ''})" type="button" class="clearInput text-color-light-secondText" >
+                            <span class="icon">
+                                <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="submitButtonContainer">
+                        <button class="mobile text-color-light-primary">
+                            <span class="icon">
+                                <fa-icon [icon]="icon.faMagnifyingGlass"></fa-icon>
+                            </span>
+                        </button>
+                        <button class="desktop text-color-light-secondery bg-color-light-primary-light">
+                            <span class="title">
+                                search
+                            </span>
+                        </button>
+                    </div>
+                </label>
+            </form>
+        </div>
+    </div>
+    <app-menu *ngIf="showMenuContainer" @animateMenuContainer (closeMenuContainer)="showMenuContainer = false"></app-menu>
+</div>

@@ -1,0 +1,86 @@
+.menuContainer{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba( 0, 0, 0, 0.5);
+    .content{
+        width: 80%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        .btnsContainer{
+            padding: 15px;
+            display: flex;
+            gap: 15px;
+            button{
+                cursor: pointer;
+                flex:0 0 40px;
+                aspect-ratio: 1/1;
+                border-radius: 50%;
+                overflow: hidden;
+                a{
+                    flex: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    span{
+                        font-size: 1.2em;
+                        fa-icon{
+                            display: flex;
+                        }
+                    }
+                }
+            }
+        }
+        .categoriesContainer{
+            flex: 1 0 0px;
+            display: flex;
+            flex-direction: column;
+            padding: 15px 0;
+            overflow-y: scroll;
+            .title{
+                padding-inline-start: 15px;
+                font-weight: 700;
+                padding-bottom: 4px;
+                p{
+                    font-size: 1.3em;
+                    &:first-letter{
+                        text-transform: capitalize;
+                    }
+                }
+            }
+            .categories{
+                padding-top: 10px;
+                flex: 1;
+                overflow-y: scroll;
+                
+                nav{
+                    ul{
+                        list-style: none;
+                        display: flex;
+                        flex-direction: column;
+                        padding-inline-start: 18px;
+                        li{
+                            a{
+                                cursor: pointer;
+                                span{
+                                    font-weight: 700;
+                                    display: block;
+                                    font-size: 1.1em;
+                                    padding-block: 8px;
+                                    &::first-letter{
+                                        text-transform: capitalize;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,94 @@
+:host{
+    position: fixed;
+    bottom: 170px;
+    left: 30px;
+}
+.contentContainer{
+    position: relative;
+    .buttonContainer{
+        button{
+            display: flex;
+            align-items: center;
+            border-radius: 18px;
+            cursor: pointer;
+            transition: .3s width;
+            width: 36px;
+            position: relative;
+            span.icon{
+                flex: 0 0 36px;
+                width: 36px;
+                height: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                fa-icon{
+                    display: flex;
+                }
+            }
+            span.title{
+                white-space: nowrap;
+                padding-right: 12px;
+                text-transform: capitalize;
+            }
+            &:hover{
+                width: 100%;
+            }
+            &.active{
+                width: 100%;
+                border-radius: 0 0 18px 18px;
+                &::after{
+                    position: absolute;
+                    z-index: -1;
+                    content: "";
+                    top: 0;
+                    left: 100%;
+                    width: 20px;
+                    height: 20px;
+                    background-color: transparent;
+                    border-top-left-radius: 100%;
+                }
+            }
+            
+        }
+    }
+    .listContainer{
+        position: absolute;
+        width: 200px;
+        height: 300px;
+        bottom: 100%;
+        border-radius: 18px 18px 18px 0px;
+        padding: 10px;
+        ul{
+            height: 100%;
+            overflow-y: scroll;
+            list-style: none;
+            display: block;
+            flex-direction: column;
+            &::-webkit-scrollbar {
+                width: 3px;
+            }
+            li{
+                .itemUserContainer{
+                    padding-block: 5px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    .contentContainer{
+                        display: flex;
+                        align-items: baseline;
+                        gap: 5px;
+                        span{
+                            font-size: .8em;
+                            &.username{
+                                font-weight: 500;
+                            }
+                            &.icon{
+                                padding-inline: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

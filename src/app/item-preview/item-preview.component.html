@@ -1,0 +1,38 @@
+<div class="itemContainer bg-color-light-backgorund" (mouseleave)="leaveItem()" (mouseenter)="enterItem()" (click)="goToProduct()">
+    <div class="imgContainer">
+        <app-carousel [images]="item.images.slice(0,2)"></app-carousel>
+    </div>
+    <div class="infoContainer">
+        <div class="title">
+            <h2 class="text-color-light-secondText">{{item.title}}</h2>
+        </div>
+        <div class="ratingContianer">
+            <span class="rating">
+                <app-rating [curentRating]="item.rating" [maxRating]="5"></app-rating>
+            </span>
+        </div>
+        <div class="detailsContainer">
+            <div class="priceContainer">
+                <span class="newPrice">
+                    {{item.price | discountPercentage: item.discountPercentage | currency}}
+                </span>
+                <span class="oldPrice text-color-light-text-light" *ngIf="item.discountPercentage > 0">
+                    {{item.price | currency}}
+                </span>
+            </div>
+            <button class="addToCart bg-color-light-primary text-color-light-secondery hover-bg-color-light-primary-light" (click)="addProductToCartList($event)">
+                <fa-icon class="burger" [icon]="icon.faCartShopping"></fa-icon>
+            </button>
+        </div>
+    </div>
+    <div class="discountPercentageContianer bg-color-light-primary-light text-color-light-backgorund" *ngIf="item.discountPercentage > 0">
+        <span class="title"> 
+            {{item.discountPercentage | number:'1.0-0'}}% off
+        </span>
+    </div>
+    <div class="hoverContainer">
+        <button class="addToFavourite text-color-light-primary hover-bg-color-light-primary hover-text-color-light-secondery" [ngClass]="{'bg-color-light-primary text-color-light-secondery': itemInWhishList}" (click)="toggleProductToWhishlist($event)">
+            <fa-icon class="burger" [icon]="icon.faHeart"></fa-icon>
+        </button>
+    </div>
+</div>

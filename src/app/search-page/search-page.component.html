@@ -1,0 +1,16 @@
+<div class="container">
+    <ng-container *ngIf="!isErrorRequest else errorTpm">
+        <div class="titleContainer">
+            <h1>
+                results for
+                <span class="marker">
+                    "{{searchValue}}"
+                </span>
+            </h1>
+        </div>
+        <app-grid-system [loading]="loading" [products]="productsList"></app-grid-system>
+    </ng-container>
+    <ng-template #errorTpm>
+        <app-not-found></app-not-found>
+    </ng-template>
+</div>

@@ -1,0 +1,360 @@
+@use "sass:map";
+@import "../../style/variables";
+
+:host{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.container{
+    flex: 1;
+    padding: 20px 0; 
+    gap: 10px;
+    //flex-direction: row;
+    flex-direction: column;
+    position: relative;
+    section{
+        display: flex;
+        &.left{
+            //flex: 0 0 200px;
+            //flex-direction: column;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #0000002d;
+            padding-bottom: 10px;
+            //padding-inline: 20px;
+            .infoContainer{
+                order: 1;
+                align-self: stretch;
+                display: flex;
+                flex-direction: row;
+                //flex-direction: column;
+                //justify-content: center;
+                justify-content: flex-start;
+                padding: 5px;
+                //gap: 5px;
+                gap: 10px;
+                align-items: center;
+                //border-bottom: 1px solid #0000002d;
+                .bannerContainer{
+                   // width: 80px;
+                    //height: 80px;
+                    width: 40px;
+                    aspect-ratio: 1/1;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    //font-size: 2.4em;
+                    font-size: 1.5em;
+                    text-transform: uppercase;
+                    font-weight: 500;
+                }
+                .messageContainer{
+                    //align-self: stretch;
+                    align-self: center;
+                    p.message{
+                        font-size: .9em;
+                        text-align: center;
+                        span.title{
+                            text-transform: capitalize;
+                            font-weight: 500;
+                            &::after{
+                                content: ", ";
+                            }
+                        }
+                        span.value{
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+            .navigationContainer{
+                order: 3;
+                //margin-block: 10px auto;
+                align-self: center;
+                //width: 90%;
+                margin-top: 10px;
+                flex: 0 0 100%;
+                nav{
+                    ul{
+                        list-style: none;
+                        display: flex;
+                        //flex-direction: column;
+                        li{
+                            flex: 1;
+                            //width: 100%;
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: center;
+                            button{
+                                display: flex;
+                                cursor: pointer;
+                                padding: 3px 8px;
+                                font-weight: 500;
+                                gap: 5px;
+                                align-items: center;
+                                //font-size: .95em;
+                                font-size: 1.2em;
+                                span.title{
+                                    text-transform: capitalize;
+                                    display: none;
+                                }
+                                span.icon{
+                                    font-size: .9em;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .actionButtonContainer{
+                order: 2;
+                display: flex;
+                //align-self: flex-start;
+                .buttonContainer{
+                    button{
+                        display: flex;
+                        gap: 5px;
+                        font-weight: 500;
+                        padding: 8px;
+                        border-radius: 15px;
+                        font-size: 1.1em;
+                        cursor: pointer;
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                        span.title{
+                            display: none;
+                            &::first-letter{
+                                text-transform: capitalize;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.right{
+            flex: 1 0px;
+            form{
+                width: 100%;
+                .formContainer{
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 30px;
+                    .tabLabelContainer{
+                        padding-block: 5px;
+                        h2{
+                            text-align: center;
+                            //font-size: 1.3em;
+                            font-size: 1.1em;
+                            text-transform: capitalize;
+                            span.icon{
+                                font-size: .85em;
+                            }
+                        }
+                       // border-bottom: 1px solid #0000002d;
+                    }
+                    .formTabsContainer{
+                        position: relative;
+                        flex: 1 250px;
+                        overflow: hidden;
+                    }
+                    .actionsFormContainer{
+                        padding: 10px 20px;
+                        .buttonsContainer{
+                            display: flex;
+                            justify-content: flex-end;
+                            gap: 15px;
+                            .buttonContainer{
+                                button{
+                                    cursor: pointer;
+                                    display: flex;
+                                    padding: 5px 20px;
+                                    border-radius: 10px;
+                                    gap: 5px;
+                                    font-size: .85em;
+                                    span{
+                                        &.title{
+                                            text-transform: capitalize;
+                                        }
+                                    }
+                                    &:disabled{
+                                        cursor: auto;
+                                    }
+                                }
+                                &.submitButton{
+                                    button{
+                                        align-items: center;
+                                        span{
+                                            &.icon{
+                                                fa-icon{
+                                                    display: flex;
+                                                }
+                                                &.animate{
+                                                    fa-icon{
+                                                        animation: rotateInfinity .5s infinite linear;
+                                                    }
+                                                }
+                                                
+                                            }
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+@media (min-width: map.get($brakePoints, "small")){
+    .container{
+        section{
+            &.left{
+                .navigationContainer{
+                    nav{
+                        ul{
+                            li{
+                                button{
+                                    font-size: 1em;
+                                    span.title{
+                                        display: block;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width: map.get($brakePoints, "medium")){
+    .container{
+        section{
+            &.left{
+                .actionButtonContainer{
+                    .buttonContainer{
+                        button{
+                            font-size: .9em;
+                            span.title{
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+            &.right{
+                form{
+                    .formContainer{
+                        .tabLabelContainer{
+                            padding: 5px 15px;
+                            h2{
+                                text-align: left;
+                                font-size: 1.2em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width: map.get($brakePoints, "large")){
+    .container{
+        flex-direction: row;
+        section{
+            display: flex;
+            padding-inline: 10px;
+            &.left{
+                flex: 0 0 200px;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                border-bottom: none;
+                .infoContainer{
+                    
+                    flex-direction: column;
+                    justify-content: center;
+                    
+                    gap: 5px;
+                    
+                    border-bottom: 1px solid #0000002d;
+                    .bannerContainer{
+                        width: 80px;
+                        height: 80px;
+                        
+                        
+                        font-size: 2.4em;
+                        
+                    }
+                    .messageContainer{
+                        align-self: stretch;
+                    }
+                }
+                .navigationContainer{
+                    order: 2;
+                    margin-block: 10px auto;
+                    width: 90%;
+                    flex: 1 0px;
+                    nav{
+                        ul{
+                            flex-direction: column;
+                            li{
+                                justify-content: flex-start;
+                                width: 100%;
+                                button{
+                                    font-size: .95em;
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+                .actionButtonContainer{
+                    align-self: flex-start;
+                }
+            }
+            &.right{
+                
+                form{
+                    
+                    .formContainer{
+                       
+                        .tabLabelContainer{
+                            
+                            h2{
+                                text-align: left;
+                                font-size: 1.1em;
+                                
+                            }
+                            border-bottom: 1px solid #0000002d;
+                        }
+                        .formTabsContainer{
+                            flex: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes rotateInfinity{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}

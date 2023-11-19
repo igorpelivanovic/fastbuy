@@ -1,0 +1,55 @@
+:host{
+    flex: 1 0px;
+}
+.errorContainer{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .errorCodeContainer{
+        span.code{
+            font-size: 6em;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+    }
+    .errorContentContainer{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        .textContainer{
+            p{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+                span.headText{
+                    font-size: 1.3em;
+                    &::first-letter{
+                        text-transform: capitalize;
+                    }
+                }
+                span.text{
+                    font-size: .85em;
+                    &::first-letter{
+                        text-transform: capitalize;
+                    }
+                }
+            }
+        }
+        .actionsContainer{
+            display: flex;
+            justify-content: center;
+            .buttonContainer{
+                button{
+                    cursor: pointer;
+                    padding: 8px 25px;
+                    border-radius: 8px;
+                    text-transform: capitalize;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}

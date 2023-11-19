@@ -1,0 +1,33 @@
+<div class="alertsContainer">
+    <div class="alertBox bg-color-light-secondBackgorund">
+        <div class="alertTitleContainer">
+            <h2 class="text-color-light-text">unsaved changes</h2>
+        </div>
+        <div class="alertMsgContainer">
+            <p class="text-color-light-secondText">
+                <span class="row">
+                    are you sure you want to leave this page?
+                </span>
+                <span class="row">
+                    changes you made will not be saved.
+                </span>
+            </p>
+        </div>
+        <div class="alertActionsContainer">
+            <div class="buttonContainer">
+                <button class="bg-color-light-text-secondText-light text-color-light-secondText" type="button" (click)="canLeave(false)">
+                    <span class="title">
+                        cancel
+                    </span>
+                </button>
+            </div>
+            <div class="buttonContainer">
+                <button class="bg-color-light-accent text-color-light-secondery" type="button" (click)="canLeave(true)">
+                    <span class="title">
+                        leave page
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<ng-container *ngIf="requestIsProccesing else contentTmp">
+    <div class="loadingContainer">
+        <app-full-screen-loader></app-full-screen-loader>
+    </div>
+</ng-container>
+<ng-template #contentTmp>
+    <form [formGroup]="cartForm" (ngSubmit)="formSubmit()" >
+        <div class="formContainer">
+            <div class="mainContainer">
+                <div class="flexContainer">
+                    <ng-container *ngIf="showListItems else addressTmp">
+                        <app-items-list formArrayName="items" [arrayForm]="formItemsArray"></app-items-list>
+                    </ng-container>
+                    <ng-template #addressTmp>
+                        <app-address [userData]="userData" [formGroup]="getCartFormGroup(['customerData'])"></app-address>
+                    </ng-template>
+                </div>
+            </div>
+            <div class="sideContainer">
+                <app-order-summary [formGroup]="getCartFormGroup(['shipping'])"></app-order-summary>
+                <div class="actionContainer">
+                    <div class="buttonContainer">
+                        <button class="bg-color-light-primary text-color-light-secondery hover-bg-color-light-primary-light" [disabled]="!this.showListItems && cartForm.invalid">
+                            <div class="buttonContent" [ngClass]="{active: !showListItems}" >
+                                <div class="section">
+                                    <span class="title">
+                                        continue
+                                    </span>
+                                </div>
+                                <div class="section">
+                                    <span class="title">
+                                        check out
+                                    </span>
+                                    <span class="icon">
+                                        <fa-icon [icon]="icon.faShoppingCart"></fa-icon>
+                                    </span>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="buttonContainer">
+                        <a routerLink=".." class="text-color-light-primary-light">
+                            <span class="icon">
+                                <fa-icon [icon]="icon.faChevronLeft"></fa-icon>
+                            </span>
+                            <span class="title">
+                                back to shopping
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</ng-template>

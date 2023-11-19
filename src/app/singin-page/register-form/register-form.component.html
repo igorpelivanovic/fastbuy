@@ -1,0 +1,62 @@
+<section>
+    <app-loading-box *ngIf="requestSend"></app-loading-box>
+    <div class="sectionLabel">
+        <h2 class="text-color-light-secondText">sing up simulation</h2>
+    </div>
+    <div class="sectionContent">
+        <div class="formTabInfo">
+            <h3 class="tabLabel">{{titleFormTab[currentRegisterTab]}}</h3>
+            <p class="countTab">{{currentRegisterTab+1}} of {{titleFormTab.length}}</p>
+        </div>
+        <div class="formContainer">
+            <form [formGroup]="registerForm" (ngSubmit)="checkNext()">
+                <div class="formTabsContainer" [@slideFormTabInOut]="currentRegisterTab" [ngSwitch]="currentRegisterTab">
+                    <ng-template [ngSwitchCase]="0">
+                        <app-general-form-group [group]="getGroupForm('general')"></app-general-form-group>
+                    </ng-template>
+                    <ng-template [ngSwitchCase]="1">
+                            <app-account-form-group [group]="getGroupForm('account')"></app-account-form-group>
+                    </ng-template>
+                    <ng-template [ngSwitchCase]="2">
+                            <app-contact-form-group [group]="getGroupForm('contact')"></app-contact-form-group>
+                    </ng-template>
+                    <ng-template [ngSwitchCase]="3">
+                            <app-address-form-group [group]="getGroupForm('address')"></app-address-form-group>
+                    </ng-template>
+                </div>
+                <div class="formActionContainer">
+                    <div class="errorContainer" *ngIf="requestFinish">
+                        <span class="msg" [ngClass]="errorResponse ? 'text-color-light-error': 'text-color-light-primary'">{{infoMessage}}</span>
+                    </div>
+                    <div class="buttonContainer" *ngIf="currentRegisterTab > 0">
+                        <button class="text-color-light-secondText" type="button" (click)="prevFormTab()">
+                            <span class="icon">
+                                <fa-icon [icon]="icon.faAngleLeft"></fa-icon>
+                            </span>
+                            <span class="title">
+                                back
+                            </span>
+                        </button>
+                    </div>
+                    <div class="buttonContainer">
+                        <button class="bg-color-light-primary text-color-light-secondery" (click)="checkNext()" [disabled]="!currentGroupValid">
+                            <ng-container *ngIf="!lastFormTab else registerBtnTemplate">
+                                <span class="title">
+                                    next
+                                </span>
+                                <span class="icon">
+                                    <fa-icon [icon]="icon.faAngleRight"></fa-icon>
+                                </span>
+                            </ng-container>
+                            <ng-template #registerBtnTemplate>
+                                <span class="title">
+                                    register
+                                </span>
+                            </ng-template>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

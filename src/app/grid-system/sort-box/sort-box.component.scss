@@ -1,0 +1,131 @@
+@use "sass:map";
+@import "./../../../style/variables";
+.labelSortOptions{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    cursor: pointer;
+    >span{
+        display: none;
+    }
+    >button{
+        padding: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+        border-radius: 10px;
+        font-size: .8em;
+        cursor: pointer;
+        fa-icon{
+            display: flex;
+        }
+        .title{
+            text-transform: capitalize;
+            margin: 0 auto 0 10px;
+        }
+        .arrow{
+            position: relative;
+            transform: rotate(0);
+            transition: .3s;
+        }
+    }
+    &:has(+.sortOptions.active){
+        button{
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            cursor: pointer;
+        }
+        .arrow{
+            transform: rotate(180deg);
+        }
+    }
+}
+
+
+.sortOptions{
+    display: none;
+    z-index: 100;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    box-shadow: 0 2px 15px #1b1c1e5c;
+    border-radius: 10px 0 10px 10px;
+    &.active{
+        display: block;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        .sortOption{
+            width: 100%;
+            label{
+                cursor: pointer;
+                display: block;
+                width: 100%;
+                padding: 2px 5px;
+                border-radius: 5px;
+                input{
+                    display: none;
+                }
+                span.title{
+                    font-size: .8em;
+                    text-transform: capitalize;
+                }
+            }
+            
+        }
+    }
+}
+
+
+@media (min-width: map.get($brakePoints, "small")){
+    .labelSortOptions{
+        >button{
+            font-size: 1em;
+            //width: 200px;
+        }
+    }
+    .sortOptions{
+        form{
+            .sortOption{
+                label{
+                    span.title{
+                        font-size: 1em;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width: map.get($brakePoints, "medium")){
+    .labelSortOptions{
+        >span{
+            display: block;
+            white-space: nowrap;
+            font-size: 1.1em;
+            &::first-letter{
+                text-transform: capitalize;
+            }
+        }
+        >button{
+            width: 200px;
+        }
+        
+    }
+    .sortOptions{
+        form{
+            .sortOption{
+                label{
+                    span.title{
+                        font-size: 1em;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,92 @@
+<div class="filterBar text-color-light-secondText" [ngClass]="{active: filterBoxServ.showFilterBox}">
+    <form [formGroup]="form">
+        <div class="filterContainer">
+            <div class="titleFilter" (click)="openBrand = !openBrand">
+                <p>brand</p>
+                <span class="icon" [ngClass]="{open: openBrand}">
+                    <fa-icon [icon]="icon.faChevronDown"></fa-icon>
+                </span>
+            </div>
+            <div class="valuesContianer" formArrayName="brands" [@openClose]="openBrand ? 'open' : 'close'" >
+                <div class="valuesfilter" >
+                    <div class="valueFilter" *ngFor="let option of brands.controls; let i = index">
+                        <label [for]="'brand'+i">
+                            <input type="checkbox" [name]="'brand'+i" [id]="'brand'+i" formControlName="{{i}}" >
+                            <span class="title">
+                                {{filterOptions.brands[i]}}
+                            </span>
+                            <span class="icon">
+                                <fa-icon [icon]="icon.faCheck"></fa-icon>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="filterContainer">
+            <div class="titleFilter" (click)="openPrice = !openPrice">
+                <p>price</p>
+                <span class="icon" [ngClass]="{open: openPrice}">
+                    <fa-icon [icon]="icon.faChevronDown"></fa-icon>
+                </span>
+            </div>
+            <div class="valuesContianer" [@openClose]="openPrice ? 'open' : 'close'">
+                <div class="valuesfilter" >
+                    <div class="valueFilter range">
+                        <div class="inputContainer">
+                            <input type="range" name="minPrice" id="minPrice" #inputRanges checkRangeMinVal [max]="filterOptions.price.max" [min]="filterOptions.price.min" formControlName="minPrice" [range]="filterOptions.price" [valueMax]="maxPrice.value" [filterSerivece]="filterBoxServ" >
+                            <input type="range" name="maxPrice" id="maxPrice" #inputRanges checkRangeMaxVal [max]="max" [min]="filterOptions.price.min" formControlName="maxPrice" [range]="filterOptions.price"  [valueMin]="minPrice.value" [filterSerivece]="filterBoxServ" >
+                            <span class="line bg-color-light-secondText-light bg" [ngStyle]="{background: generateBgRange(filterOptions.price, form.get('minPrice')?.value, form.get('maxPrice')?.value)}"></span>
+                        </div>
+                        <div class="currentValue">
+                            <span class="value">{{form.get('minPrice')?.value | currency }} - {{form.get('maxPrice')?.value | currency }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="filterContainer">
+            <div class="titleFilter" (click)="openRating = !openRating">
+                <p>rating</p>
+                <span class="icon" [ngClass]="{open: openRating}">
+                    <fa-icon [icon]="icon.faChevronDown"></fa-icon>
+                </span>
+            </div>
+            <div class="valuesContianer" [@openClose]="openRating ? 'open' : 'close'">
+                <div class="valuesfilter" >
+                    <div class="valueFilter range">
+                        <div class="inputContainer">
+                            <input type="range" name="minRating" id="minRating" checkRangeMinVal formControlName="minRating" [max]="filterOptions.rating.max" [min]="filterOptions.rating.min" [range]="filterOptions.rating" [valueMax]="maxRating.value" >
+                            <input type="range" name="maxRating" id="maxRating" checkRangeMaxVal formControlName="maxRating" [max]="filterOptions.rating.max" [min]="filterOptions.rating.min" [range]="filterOptions.rating"  [valueMin]="minRating.value" >
+                            <span class="line bg-color-light-secondText-light bg" [ngStyle]="{background: generateBgRange(filterOptions.rating, form.get('minRating')?.value, form.get('maxRating')?.value)}"></span>
+                        </div>
+                        <div class="currentValue">
+                            <div class="ratingStar">
+                                <app-rating [maxRating]="filterOptions.rating.max" [curentRating]="form.get('minRating')?.value"></app-rating>
+                            </div>
+                            <span class="value">{{form.get('minRating')?.value}} - {{form.get('maxRating')?.value}}</span>
+                            <div class="ratingStar">
+                                <app-rating [maxRating]="filterOptions.rating.max" [curentRating]="form.get('maxRating')?.value"></app-rating>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearForm">
+            <button (click)="clearForm()" class="bg-color-light-primary text-color-light-secondery hover-bg-color-light-primary-light">
+                <span class="title">
+                    reset
+                </span>
+                <span class="icon">
+                    <fa-icon [icon]="icon.faArrowsRotate"></fa-icon>
+                </span>
+            </button>
+        </div>
+    </form>
+    <div class="closeBarContainer">
+        <button (click)="filterBoxServ.toggleShowFilter()" class="bg-color-light-primary text-color-light-secondery hover-bg-color-light-primary-light">
+            close
+        </button>
+    </div>
+</div>

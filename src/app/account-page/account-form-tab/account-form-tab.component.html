@@ -1,0 +1,92 @@
+<div class="formTabContainer" [formGroup]="formGroup">
+    <div class="inputsTabFormContainer">
+        <div class="inputTabFormContainer">
+            <label for="username">
+                <div class="inputBoxContainer">
+                    <div class="labelContainer">
+                        <span class="label text-color-light-text-light">username</span>
+                    </div>
+                    <div class="inputContainer">
+                        <input type="text" id="username" name="username" class="text-color-light-text-light" spellcheck="false" formControlName="username" autocomplete="off">
+                        <div class="buttonsContainer" *ngIf="!getFormControl('username').hasError('required')">
+                            <div class="buttonContainer">
+                                <button type="button" (click)="clearFormControl('username')">
+                                    <span class="icon text-color-light-secondText">
+                                        <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <ng-container *ngIf="getFormControl('username').touched && getFormControl('username').invalid">
+                            <app-error-message [errors]="getFormControl('username').errors"></app-error-message>
+                        </ng-container>
+                    </div>
+                </div>
+            </label>
+        </div>
+        <div class="inputsTabFormContainer row" [formGroup]="getFormGroup('password')">
+            <div class="inputTabFormContainer">
+                <label for="password">
+                    <div class="inputBoxContainer">
+                        <div class="labelContainer">
+                            <span class="label text-color-light-text-light">password</span>
+                        </div>
+                        <div class="inputContainer">
+                            <input [type]="hiddenPassword ? 'password' : 'text'" id="password" name="password" class="text-color-light-text-light" spellcheck="false" formControlName="password" autocomplete="off">
+                            <div class="buttonsContainer" *ngIf="!getFormControl('password', getFormGroup('password')).hasError('required')">
+                                <div class="buttonContainer">
+                                    <button type="button" (click)="toggleHidePass()">
+                                        <span class="icon text-color-light-secondText">
+                                            <fa-icon [icon]="hiddenPassword ? icon.faEyeSlash :icon.faEye"></fa-icon>
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="buttonContainer">
+                                    <button type="button" (click)="clearFormControl('password', getFormGroup('password'))">
+                                        <span class="icon text-color-light-secondText">
+                                            <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                            <ng-container *ngIf="getFormControl('password', getFormGroup('password')).touched && getFormControl('password', getFormGroup('password')).invalid">
+                                <app-error-message [errors]="getFormControl('password', getFormGroup('password')).errors"></app-error-message>
+                            </ng-container>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <div class="inputTabFormContainer" *ngIf="getFormControl('password', getFormGroup('password')).dirty">
+                <label for="repeatPassword">
+                    <div class="inputBoxContainer">
+                        <div class="labelContainer">
+                            <span class="label text-color-light-text-light">repeat password</span>
+                        </div>
+                        <div class="inputContainer">
+                            <input [type]="hiddenRepeatPassword ? 'password' : 'text'" id="repeatPassword" name="repeatPassword" class="text-color-light-text-light" spellcheck="false" formControlName="repeatPassword" autocomplete="off">
+                            <div class="buttonsContainer" *ngIf="!getFormControl('repeatPassword', getFormGroup('password')).hasError('required')">
+                                <div class="buttonContainer">
+                                    <button type="button" (click)="toggleHideRepPass()">
+                                        <span class="icon text-color-light-secondText">
+                                            <fa-icon [icon]="hiddenRepeatPassword ? icon.faEyeSlash :icon.faEye"></fa-icon>
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="buttonContainer">
+                                    <button type="button" (click)="clearFormControl('repeatPassword', getFormGroup('password'))">
+                                        <span class="icon text-color-light-secondText">
+                                            <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                            <ng-container *ngIf="getFormGroup('password').invalid && getFormControl('repeatPassword', getFormGroup('password')).touched">
+                                <app-error-message [errors]="getFormGroup('password').errors"></app-error-message>
+                            </ng-container>
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

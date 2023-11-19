@@ -1,0 +1,50 @@
+<div class="btnTopContainer" @slideInOut *ngIf="showScrollBtn">
+    <button class="text-color-light-secondery bg-color-light-primary-light" (click)="goToTop()">
+        <span class="title">
+            <fa-icon [icon]="icon.faChevronUp"></fa-icon>
+        </span>
+    </button>
+</div>
+<div class="footerTop">
+    <div class="container">
+        <div class="footerBox logo">
+            <div class="logoContainer">
+                <img src="./../../../assets/logo.svg" alt="logo">
+            </div>
+        </div>
+        <div class="footerBox contacts">
+            <div class="btnContainer">
+                <button class="text-color-light-secondAccent bg-color-light-primary-light">
+                    <a href="tel:+0100000000">
+                        <span class="icon">
+                            <fa-icon [icon]="icon.faPhone"></fa-icon>
+                        </span>
+                    </a>
+                </button>
+            </div>
+            <div class="btnContainer">
+                <button class="text-color-light-secondAccent bg-color-light-primary-light">
+                    <a href="mailto:test@test.com">
+                        <span class="icon">
+                            <fa-icon [icon]="icon.faEnvelope"></fa-icon>
+                        </span>
+                    </a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footerBottom">
+    <div class="container">
+        <div class="footerBox copyRight">
+            <p>
+                <span class="copyRight text-color-light-secondery">
+                    copyright &copy; {{date | date: "y"}}
+                </span>
+                <a href="https://github.com/igorpelivanovic" target="_blank" class="text-color-light-primary-light">
+                    igor pelivanović
+                </a>
+            </p>
+        </div>
+    </div>
+</div>

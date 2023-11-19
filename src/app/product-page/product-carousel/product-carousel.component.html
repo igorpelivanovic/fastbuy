@@ -1,0 +1,42 @@
+<div class="imgsBox">
+    <ng-container *ngIf="smallScreen">
+        <div class="carouselContainer smallScreen">
+            <div class="carouselBox" (touchstart)="touchStart($event)" (touchmove)="touchMove($event)" (touchend)="touchEnd()">
+                <div class="imgsContainer" [ngClass]="{transition: addTransition}" #carousel [ngStyle]="style" (transitionend)="checkInfinity()">
+                    <div class="imgContainer" #carouselItem *ngFor="let image of images | carousel; let i = index" [id]="'carouselItem'+i">
+                        <img image [src]="image" [alt]="'image'+i">
+                    </div>
+                </div>
+            </div>
+            <div class="indicatorContainer">
+                <ul>
+                    <li *ngFor="let image of images; let i = index">
+                        <button [ngClass]="i+1 == aciveCount ? 'active bg-color-light-primary' : 'bg-color-light-primary-light'" (click)="goToSlide(i+1)">
+                            <span class="indicator"></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="!smallScreen">
+        <div class="carouselContainer standardScreen">
+            <div class="indicatorsContainer">
+                <div class="indicatorsBox">
+                    <div class="indicatorContainer" *ngFor="let image of images; let i = index">
+                        <button (click)="slideToEl(i)">
+                            <img image [src]="image" [alt]="'indicator'+i">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="imagesContainer">
+                <div class="imageContainer" *ngFor="let image of images; let i = index" carouselStandardElement [key]="i">
+                    <button>
+                        <img image [src]="image" [alt]="'image'+i">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

@@ -1,0 +1,34 @@
+<div class="contentContainer">
+    <div class="buttonContainer">
+        <button class="bg-color-light-primary text-color-light-secondery" [ngClass]="{active: renderList}" type="button" (click)="toggle()">
+            <span class="icon">
+                <fa-icon [icon]="icon.faUsers"></fa-icon>
+            </span>
+            <span class="title ">
+                users list
+            </span>
+        </button>
+    </div>
+    <div class="listContainer bg-color-light-secondery-light" *ngIf="renderList" >
+        <ul>
+            <ng-container *ngFor="let user of usersList">
+                <li>
+                    <div class="itemUserContainer">
+                        <div class="contentContainer">
+                            <span class="icon text-color-light-primary-light">
+                                <fa-icon [icon]="icon.faUser"></fa-icon>
+                            </span>
+                            <span class="username text-color-light-secondText">{{user.username}}</span>
+                        </div>
+                        <div class="contentContainer">
+                            <span class="icon text-color-light-primary-light">
+                                <fa-icon [icon]="icon.faLock"></fa-icon>
+                            </span>
+                            <span class="password text-color-light-text-light">{{user.password}}</span>
+                        </div>
+                    </div>
+                </li>
+            </ng-container>
+        </ul>
+    </div>
+</div>

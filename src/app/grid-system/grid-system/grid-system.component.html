@@ -1,0 +1,64 @@
+<div class="gridSystemContainer">
+    <app-filter-box></app-filter-box>
+    <div class="itemsContainer">
+        <div class="itemsInfoLine">
+            <div class="btnsContainer filters">
+                <button (click)="filterBoxServ.toggleShowFilter()" class="bg-color-light-primary text-color-light-secondery">
+                    <span class="icon">
+                        <fa-icon [icon]="icon.faFilter"></fa-icon>
+                    </span>
+                    <span class="title">
+                        filters
+                    </span>
+                    <span class="arrow">
+                        <fa-icon [icon]="icon.faChevronDown"></fa-icon>
+                    </span>
+                </button>
+            </div>
+            <div class="btnsContainer filtersList">
+                <div class="btnContainer text-color-light-secondText brand" *ngIf="filterBoxServ.currentBrands.length > 0">
+                    <span class="title">
+                        {{filterBoxServ.currentBrands | activeBrand}}
+                    </span>
+                    <button (click)="removeBrands()" class="text-color-light-secondText">
+                        <span class="icon">
+                            <fa-icon [icon]="icon.faXmark"></fa-icon>
+                        </span>
+                    </button>
+                </div>
+                <div class="btnContainer text-color-light-secondText price" *ngIf="filterBoxServ.currentPrice && !isLoading">
+                    <span class="title">
+                        price ({{filterBoxServ.current.price.min | currency}}-{{filterBoxServ.current.price.max | currency}})
+                    </span>
+                    <button (click)="removePrice()" class="text-color-light-secondText">
+                        <span class="icon">
+                            <fa-icon [icon]="icon.faXmark"></fa-icon>
+                        </span>
+                    </button>
+                </div>
+                <div class="btnContainer text-color-light-secondText rating" *ngIf="filterBoxServ.currentRating && !isLoading">
+                    <span class="title">
+                        rating-stars ({{filterBoxServ.current.rating.min}}-{{filterBoxServ.current.rating.max}})
+                    </span>
+                    <button (click)="removeRating()" class="text-color-light-secondText">
+                        <span class="icon">
+                            <fa-icon [icon]="icon.faXmark"></fa-icon>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="btnsContainer sort" >
+                <app-sort-box></app-sort-box>
+            </div>
+        </div>
+        <div class="gridContainer">
+            <ng-container *ngIf="products | filtringData: {brands: filterBoxServ.currentBrands, price: filterBoxServ.current.price, rating: filterBoxServ.current.rating} : sortBoxServ.currentOption as filterProducts">
+                <app-item-preview *ngFor="let item of filterProducts" [item]="item"></app-item-preview>
+                <ng-container *ngIf="filterProducts.length == 0 && !isLoading">
+                    <app-no-results></app-no-results>
+                </ng-container>
+            </ng-container>
+        </div>
+        <app-loader *ngIf="isLoading"></app-loader>
+    </div>
+</div>

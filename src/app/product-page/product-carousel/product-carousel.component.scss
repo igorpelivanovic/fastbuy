@@ -1,0 +1,144 @@
+@use "sass:map";
+@import "./../../../style/variables";
+
+:host{
+    flex: 1;
+}
+
+.imgsBox{
+    display: flex;
+    .carouselContainer{
+        display: flex;
+        &.smallScreen{
+            flex-direction: column;
+            .carouselBox{
+                overflow: hidden;
+                flex: 0 0 330px;
+                display: flex;
+                align-items: center;
+                .imgsContainer{
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    transition: 0s transform;
+                    &.transition{
+                        transition-duration: 200ms;
+                    }                
+                    .imgContainer{
+                        flex: 0 0 100%;
+                        display: flex;
+                        img{
+                            object-fit: contain;
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+            .indicatorContainer{
+                padding-block: 20px;
+                ul{
+                    list-style: none;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 8px;
+                    li{
+                        button{
+                            box-sizing: content-box;
+                            border-color: transparent;
+                            width: 6px;
+                            aspect-ratio: 1/1;
+                            border-radius: 50%;
+                            overflow: hidden;
+                            cursor: pointer;
+                            
+                        }
+                    }
+                }
+            }
+        }
+        &.standardScreen{
+            flex-direction: row;
+            .indicatorsContainer{
+
+                flex: 0 0 100px;
+                .indicatorsBox{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    position: sticky;
+                    top: 150px;
+
+                    left: 0px;
+                    .indicatorContainer{
+                        button{
+                            border-radius: 5px;
+                            overflow: hidden;
+                            cursor: pointer;
+                            width: 70px;
+                            aspect-ratio: 1/1;
+                            img{
+                                width: 100%;
+                                object-fit: contain;
+                            }
+                        }
+                    }
+                }
+                
+            }
+            .imagesContainer{
+
+                flex: 1;
+                .imageContainer{
+                    width: 100%;
+                    img{
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+@media (min-width: map.get($brakePoints, "medium")) {
+    * {
+        scroll-margin-top: 150px;
+      }
+}
+
+@media (min-width: map.get($brakePoints, "large")) {
+    * {
+        scroll-margin-top: 160px;
+      }
+      .imgsBox{
+        .carouselContainer{
+            &.standardScreen{
+                .indicatorsContainer{
+                    .indicatorsBox{
+                        top: 160px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width: map.get($brakePoints, "extraLarge")) {
+    * {
+        scroll-margin-top: 180px;
+      }
+      .imgsBox{
+        .carouselContainer{
+            &.standardScreen{
+                .indicatorsContainer{
+                    .indicatorsBox{
+                        top: 180px;
+                    }
+                }
+            }
+        }
+    }
+}

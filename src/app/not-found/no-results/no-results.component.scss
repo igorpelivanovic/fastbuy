@@ -1,0 +1,17 @@
+:host{
+    grid-column: 1 / -1;
+}
+.noResultsContainer{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    .iconContainer{
+        font-size: 4em;
+    }
+    .titleContainer{
+        font-weight: 500;
+    }
+}

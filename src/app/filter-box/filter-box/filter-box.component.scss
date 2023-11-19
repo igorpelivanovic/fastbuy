@@ -1,0 +1,221 @@
+@use "sass:map";
+@import "./../../../style/variables";
+
+:host{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+    background: rgba( 0, 0, 0, 0.5);
+    display: none;
+    &:has( .filterBar.active){
+        display: flex;
+        align-items: stretch;
+    }
+}
+
+.filterBar{
+    position: relative;
+    width: 270px;
+    background-color: map.get(map.get($theme, "light"), "secondery-light");
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: .5s;
+    .closeBarContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        button{
+            text-transform: capitalize;
+            padding: 5px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        .clearForm{
+            order: 1;
+            display: flex;
+            justify-content: center;
+            margin-block: 10px;
+            button{
+                cursor: pointer;
+                padding: 8px 20px;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                text-transform: uppercase;
+                gap: 5px;
+                span.title{
+                    font-size: 1.1em;
+                }
+                fa-icon{
+                    display: flex;
+                }
+            }
+        }
+        .filterContainer{
+            order: 2;
+            padding-inline: 5px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            .titleFilter{
+                padding-block: 15px;
+                display: flex;
+                justify-content: space-between;
+                font-weight: 700;
+                text-transform: capitalize;
+                font-size: 1em;
+                cursor: pointer;
+                span.icon{
+                    transform: rotate(0deg);
+                    transition: .3s;
+                    &.open{
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+            .valuesContianer{
+                .valuesfilter{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4px;
+                    padding-bottom: 15px;
+                    .valueFilter{
+                        overflow: hidden;
+                        border-radius: 8px;
+                        label{
+                            padding: 2px 8px;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            cursor: pointer;
+                            input{
+                                display: none;
+                                &:checked~span.icon{
+                                    display: block;
+                                }
+                            }
+                            span.icon{
+                                display: none;
+                                font-size: .9em;
+                            }
+                            span.title{
+                                font-size: .9em;
+                                &::first-letter{
+                                    text-transform: capitalize;
+                                }
+                            }
+                        }
+                        &.range{
+                            display: flex;
+                            flex-direction: column;
+                            gap: 5px;
+                            .currentValue{
+                                display: flex;
+                                justify-content: space-around;
+                                gap: 10px;
+                                font-size: .8em;
+                                font-weight: 500;
+                                .ratingStar{
+                                    font-size: .8em;
+                                    display: flex;
+                                    align-items: center;
+                                }
+                            }
+                        }
+                        .inputContainer{
+                            position: relative;
+                            height: 30px;
+                            margin-inline: 10px;
+                            span.line{
+                                height: 5px;
+                                width: 100%;
+                                position: absolute;
+                                top: 50%;
+                                left: 0;
+                                transform: translateY(-50%);
+                                border-radius: 4px;
+                            }
+                            input{
+                                position: absolute;
+                                top: 50%;
+                                left: 0;
+                                transform: translateY(-50%);
+                                width: 100%;
+                                appearance: none;
+                                pointer-events: none;
+                                z-index: 1;
+                                &::-webkit-slider-thumb{
+                                    cursor: pointer;
+                                    pointer-events: auto;
+                                    border-radius: 50%;
+                                    appearance: none;
+                                    width: 15px;
+                                    height: 15px;
+                                }
+                                &::-moz-range-thumb{
+                                    cursor: pointer;
+                                    pointer-events: auto;
+                                    border-radius: 50%;
+                                    appearance: none;
+                                    width: 15px;
+                                    height: 15px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}
+@media (min-width: map.get($brakePoints, "large")){
+    :host{
+        flex: 0 0 270px ;
+        padding: 10px 20px;
+        display: block;
+        position: relative;
+        height: auto;
+        background-color: transparent;
+        z-index: 10;
+
+    }
+    .filterBar{
+        position: sticky;
+        top: 160px;
+        left: 0;
+        width: 100%;
+        padding: 0;
+        form{
+            display: flex;
+            flex-direction: column;
+            .clearForm{
+                order: 2;
+            }
+            .filterContainer{
+                order: 1;
+            }
+        }
+        .closeBarContainer{
+            display: none;
+        }
+    }
+}
+
+@media (min-width: map.get($brakePoints, "extraLarge")){
+    
+}
+@media (min-width: map.get($brakePoints, "extraExtraLarge")){
+    
+}

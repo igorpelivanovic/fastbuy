@@ -1,0 +1,59 @@
+<div class="orderSummaryContainer">
+    <div class="labelContainer">
+        <p>order summary</p>
+    </div>
+    <div class="orderDataContainer">
+        <div class="summaryContainer">
+            <div class="generalOptions">
+                <div class="itemDataContainer">
+                    <div class="label">
+                        <p>subtotal</p>
+                    </div>
+                    <div class="value">
+                        <p>{{subTotalValue | currency}}</p>
+                    </div>
+                </div>
+                <div class="itemDataContainer">
+                    <div class="label">
+                        <p>sales tax</p>
+                    </div>
+                    <div class="value">
+                        <p>{{subTotalValue | salesTax | currency}}</p>
+                    </div>
+                </div>
+                <div class="itemDataContainer column">
+                    <div class="label">
+                        <p>shipping</p>
+                    </div>
+                    <div class="optionsContainer" [formGroup]="formGroup">
+                        <div class="optionContainer" *ngFor="let option of shippingPrice; let i = index">
+                            <label [for]="'shippingOption'+i">
+                                <input type="radio" name="price" [id]="'shippingOption'+i" [value]="option.price" formControlName="price">
+                                <div class="checkIndicatorContainer">
+                                    <span class="indicator bg-color-light-primary text-color-light-secondery">
+                                        <fa-icon [icon]="icon.faCheck"></fa-icon>
+                                    </span>
+                                </div>
+                                <div class="labelContainer text-color-light-secondText">
+                                    <p>{{option.title}}
+                                        <span class="price">
+                                            {{option.price | currency}}
+                                        </span>
+                                    </p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="itemDataContainer totalPrice">
+                    <div class="label">
+                        <p>total cost</p>
+                    </div>
+                    <div class="value">
+                        <p>{{subTotalValue + shippingValue +(subTotalValue | salesTax) | currency}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div>
+    <div class="labelSortOptions" clickOutside (clickedOutside)="handlerOutside($event)" (click)="sortBoxShow = !sortBoxShow" >
+        <span>sort by:</span>
+        <button class="bg-color-light-primary text-color-light-secondery">
+            <span class="title">
+                {{currentValue.label}}
+            </span>
+            <span class="arrow">
+                <fa-icon [icon]="icon.faChevronDown"></fa-icon>
+            </span>
+        </button>
+    </div>
+    <div class="sortOptions bg-color-light-secondery-light" [ngClass]="{active: sortBoxShow}">
+        <form [formGroup]="formSort">
+            <div class="sortOption bg-color-light-secondery-light" *ngFor="let option of options; let i = index">
+                <label [for]="'sortOption'+i" class="text-color-light-secondText hover-bg-color-light-primary-light hover-text-color-light-secondery">
+                    <input type="radio" [value]="option.value" name="sort" [id]="'sortOption'+i" formControlName="sort">
+                    <span class="title">
+                        {{option.label}}
+                    </span>
+                </label>
+            </div>
+            
+        </form>
+    </div>
+</div>

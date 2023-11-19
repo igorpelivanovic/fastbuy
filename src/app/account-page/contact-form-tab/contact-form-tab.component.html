@@ -1,0 +1,52 @@
+<div class="formTabContainer" [formGroup]="formGroup">
+    <div class="inputsTabFormContainer">
+        <div class="inputTabFormContainer">
+            <label for="email">
+                <div class="inputBoxContainer">
+                    <div class="labelContainer">
+                        <span class="label text-color-light-text-light">e-mail</span>
+                    </div>
+                    <div class="inputContainer">
+                        <input type="text" id="email" name="email" class="text-color-light-text-light" spellcheck="false" formControlName="email" autocomplete="off">
+                        <div class="buttonsContainer" *ngIf="!getFormControl('email').hasError('required')">
+                            <div class="buttonContainer">
+                                <button type="button" (click)="clearFormControl('email')">
+                                    <span class="icon text-color-light-secondText">
+                                        <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <ng-container *ngIf="getFormControl('email').touched && getFormControl('email').invalid">
+                            <app-error-message input="email" [errors]="getFormControl('email').errors"></app-error-message>
+                        </ng-container>
+                    </div>
+                </div>
+            </label>
+        </div>
+        <div class="inputTabFormContainer">
+            <label for="phone">
+                <div class="inputBoxContainer">
+                    <div class="labelContainer">
+                        <span class="label text-color-light-text-light">phone</span>
+                    </div>
+                    <div class="inputContainer">
+                        <input type="text" id="phone" name="phone" class="text-color-light-text-light" spellcheck="false" formControlName="phone" autocomplete="off">
+                        <div class="buttonsContainer" *ngIf="!getFormControl('phone').hasError('required')">
+                            <div class="buttonContainer">
+                                <button type="button" (click)="clearFormControl('phone')">
+                                    <span class="icon text-color-light-secondText">
+                                        <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <ng-container *ngIf="getFormControl('phone').touched && getFormControl('phone').invalid">
+                            <app-error-message input="phoneNumber" [errors]="getFormControl('phone').errors"></app-error-message>
+                        </ng-container>
+                    </div>
+                </div>
+            </label>
+        </div>
+    </div>
+</div>

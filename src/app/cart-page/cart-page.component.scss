@@ -1,0 +1,869 @@
+@use "sass:map";
+@import "./../../style/variables";
+
+:host{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.container{
+    padding-bottom: 20px;
+    flex: 1;
+    gap: 0;
+    .cartTopContainer{
+        .title{
+            padding-block: 30px;
+            display: flex;
+            justify-content: center;
+            h1{
+                font-size: 1.5em;
+                text-transform: capitalize;
+            }
+        }
+    }
+    .cartBottomContainer{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        form{
+            flex: 1;
+            .formContainer{
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                .mainContainer{
+                    overflow: hidden;
+                    display: flex;
+                    .flexContainer{
+                        display: flex;
+                        width: 200%;
+                        transform: translateX(-100%);
+                        transition: .4s ease-in-out;
+                        &.active{
+                            transform: translateX(0%);
+                        }
+                    }
+                }
+                
+            }
+        }
+        
+        
+        
+        
+        .itemsListContainer{
+            flex: 0 0 100%;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            //gap: 15px;
+            .labelContainer{
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+                padding-bottom: 5px;
+                p{
+                    &.title{
+                        font-size: 1.15em;
+                        font-weight: 700;
+                    }
+                    &.countItems{
+                        font-size: .9em;
+                    }
+                    &::first-letter{
+                        text-transform: capitalize;
+                    }
+                }
+
+            }
+            .itemsTable{
+                padding-left: 5px;
+                flex: 1;
+                .gridRow{
+                    display: grid;
+                    grid-template-columns: 50px repeat(2, 1fr) 50px;
+                    gap: 15px 10px;
+                    font-size: .9em;
+                    
+                }
+                .itemsTableHead{
+                    display: none;
+                    .gridRow{
+                        padding-block: 5px;
+                    }
+                    .label{
+                        &.center{
+                            text-align: center;
+                        }
+                    }
+                    &::-webkit-scrollbar {
+                        width: 5px;
+                    }
+                    &::-webkit-scrollbar-track {
+                        background-color: transparent;
+                    }
+                    
+                    &::-webkit-scrollbar-thumb {
+                        //background-color: map.get(map.get($theme, "light"), "primary");
+                    }
+                }
+                .itemsTableBody{
+                    .itemsTableContainer{
+                        &::-webkit-scrollbar {
+                            width: 5px;
+                        }
+                        &::-webkit-scrollbar-track {
+                            background-color: transparent;
+                        }
+                        
+                        &::-webkit-scrollbar-thumb {
+                            //background-color: map.get(map.get($theme, "light"), "primary");
+                        }
+                        .gridRow{
+                            padding-block: 8px;
+                            .gridCeil{
+                                .ceilData{
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 8px;
+                                    .title{
+                                        font-weight: 700;
+                                        p::first-letter{
+                                            text-transform: capitalize;
+                                        }
+                                    }
+                                }
+                                &.title{
+                                    grid-column: span 3;
+                                    .ceilData{
+                                        .imgContainer{
+                                            flex: 0 0 50px;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            aspect-ratio: 1/1;
+                                            img{
+                                                width: 100%;
+                                                display: block;
+                                                object-fit: contain;
+                                            }
+                                        }
+                                        .descriptionContainer{
+                                            font-weight: 700;
+                                            display: flex;
+                                            flex-direction: column;
+                                            justify-content: space-between;
+                                            .name{
+                                                &::first-letter{
+                                                    text-transform: capitalize;
+                                                }
+                                            }
+                                            .brand{
+                                                display: none;
+                                            }
+                                        }
+                                    }
+                                }
+                                &.brand{
+                                    grid-column: 1/-1;
+                                }
+                                &.quanity{
+                                    grid-column: 1/-1;
+                                    .ceilData{
+                                        .action{
+                                            display: flex;
+                                            .buttonContainer{
+                                                flex: 0 0 25px;
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                                button{
+                                                    cursor: pointer;
+                                                    display: flex;
+                                                    justify-content: center;
+                                                    align-items: center;
+                                                    fa-icon{
+                                                        display: flex;
+                                                    }
+                                                }
+                                            }
+                                            .valueContainer{
+                                                .value{
+                                                    display: block;
+                                                    width: 40px;
+                                                    text-align: center;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                &.price{
+                                    grid-column: 1/-1;
+                                    .value{
+                                        display: flex;
+                                        gap: 5px;
+                                        .oldPrice{
+                                            text-decoration: line-through;
+                                        }
+                                    }
+                                }
+                                &.remove{
+                                    grid-area: 1 / 4;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    .ceilData{
+                                        .buttonContainer{
+                                            display: flex;
+                                            justify-content: center;
+                                            align-items: center;
+                                            button{
+                                                cursor: pointer;
+                                                font-size: 1.4em;
+                                                width: 30px;
+                                                aspect-ratio: 1/1;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .addressContainer{
+            flex: 0 0 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            .labelContainer{
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                button{
+                    width: fit-content;
+                    display: flex;
+                    align-items: baseline;
+                    gap: 5px;
+                    align-items: center;
+                    font-size: 1em;
+                    cursor: pointer;
+                    span.icon{
+                        fa-icon{
+                            display: flex;
+                            font-size: .8em;
+                        }
+                    }
+                    span.title{
+                        font-size: .9em;
+                        &::first-letter{
+                            text-transform: capitalize;
+                        }
+                    }
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+                h2{
+                    text-transform: capitalize;
+                    font-size: 1.15em;
+                }
+            }
+            .addressItems{
+                flex: 1 0px;
+                display: flex;
+                flex-direction: column;
+                .addressOptions{
+                    flex: 1 0px;
+                    overflow-y: scroll;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    &::-webkit-scrollbar {
+                        width: 5px;
+                    }
+                    &::-webkit-scrollbar-track {
+                        background-color: transparent;
+                    }
+                    
+                    &::-webkit-scrollbar-thumb {
+                        //background-color: map.get(map.get($theme, "light"), "primary");
+                    }
+                    .addressOption{
+                        border-radius: 8px;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        &.new{
+                        }
+                        >label{
+                            display: flex;
+                            width: 100%;
+                            padding: 10px;
+                            gap: 12px;
+                            align-items: center;
+                            cursor: pointer;
+                            >input{
+                                display: none;
+                            }
+                            .indicatorContainer{
+                                width: 16px;
+                                height: 16px;
+                                border-radius: 50%;
+                                box-sizing: content-box;
+                            }
+                            .titleOption{
+                                p{
+                                    font-size: 1em;
+                                    display: flex;
+                                    align-items: baseline;
+                                    gap: 15px;
+                                    span.name{
+                                        text-transform: capitalize;
+                                        font-weight: 600;
+                                    }
+                                    span.address{
+                                        font-weight: 500;
+                                        font-size: .85em;
+                                        text-transform: capitalize;
+                                    }
+                                }
+                            }
+                        }
+                        .newAddressContianer{
+                            padding-inline: 15px;
+                            padding-bottom: 30px;
+                            .inputsGridSystem{
+                                display: grid;
+                                grid-template-columns: repeat(6, 1fr);
+                                gap: 20px 15px;
+                                .inputContainer{
+                                    //background-color: red;
+                                    &.firstName, &.lastName, &.email, &.phoneNumber{
+                                        grid-column: span 2;
+                                    }
+                                    &.streetAddress{
+                                        grid-column: 1/4;
+                                    }
+                                    &.city{
+                                        grid-column: span 2;
+                                    }
+                                    &.zip{
+                                        grid-column: span 1;
+                                    }
+                                    label{
+                                        display: flex;
+                                        flex-direction: column;
+                                        font-size: .9em;
+                                        position: relative;
+                                        span.label{
+                                            font-size: .9em;
+                                            text-transform: capitalize;
+                                            font-weight: 500;
+                                        }
+                                        input{
+                                            width: 100%;
+                                            padding: 5px 10px;
+                                            display: block;
+                                            border-radius: 6px;
+                                            font-weight: 500;
+                                            background-color: transparent;
+                                            &::-webkit-outer-spin-button,
+                                            &::-webkit-inner-spin-button {
+                                                -webkit-appearance: none;
+                                                margin: 0;
+                                            }
+                                            &[type=number]{
+                                                appearance: textfield;
+                                            }
+                                        }
+                                        span.errorMsg{
+                                            position: absolute;
+                                            top: 100%;
+                                            left: 0;
+                                            font-size: .8em;
+                                            &::first-letter{
+                                                text-transform: capitalize;
+                                            }
+                                        }
+                                    }
+                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .orderSummaryContainer{
+            height: 100%;
+            padding: 10px;
+            flex: 0 0 30%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            >.labelContainer{
+                p{
+
+                    font-weight: 700;
+                    font-size: 1.15em;
+                    &::first-letter{
+                        text-transform: capitalize;
+                    }
+                }
+            }
+            .orderDataContainer{
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                .summaryContainer{
+                    display: flex;
+                    flex-direction: row;
+                    .generalOptions{
+                        flex: 0 0 100%;
+                        display: flex;
+                        flex-direction: column;
+                        .itemDataContainer{
+                            padding: 7px 5px;
+                            display: flex;
+                            justify-content: space-between;
+                            .optionsContainer{
+                                display: flex;
+                                flex-direction: column;
+                                gap: 5px;
+                            }
+                            .label{
+                                font-weight: 700;
+                            }
+                            &.totalPrice{
+                                font-size: 1.2em;
+                                font-weight: 700;
+                            }
+                            .label p::after{
+                                content: ":";
+                            }
+                            .optionContainer label{
+                                cursor: pointer;
+                                font-weight: 400;
+                                padding-inline: 10px;
+                                display: flex;
+                                gap: 10px;
+                                font-size: .9em;
+                                input{
+                                    display: none;
+                                    &:checked+.checkIndicatorContainer span.indicator.indicator{
+                                        opacity: 1;
+                                    }
+                                }
+                                .labelContainer{
+                                    p{
+                                        span.price{
+                                            &::before{
+                                                content: " - ";
+                                            }
+                                        }
+                                        &::first-letter{
+                                            text-transform: capitalize;
+                                        }
+                                    }
+                                }
+                                .checkIndicatorContainer{
+                                    display: flex;
+                                    align-items: center;
+                                    span.indicator{
+                                        width: 15px;
+                                        aspect-ratio: 1/1;
+                                        border-radius: 4px;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        opacity: 0;
+                                        fa-icon{
+                                            display: flex;
+                                            font-size: .7em;
+                                        }
+                                    }
+                                }
+                            }
+                            .label{
+                                p::first-letter{
+                                    text-transform: capitalize;
+                                }
+                            }
+                            &.column{
+                                flex-direction: column;
+                                gap: 5px;
+                            }
+                        }
+                    }
+                    
+                }
+                .actionContainer{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    .buttonContainer{
+                        display: flex;
+                        justify-content: center;
+                        button{
+                            cursor: pointer;
+                            width: 70%;
+                            display: flex;
+                            gap: 5px;
+                            font-weight: 500;
+                            text-transform: uppercase;
+                            border-radius: 10px;
+                            overflow: hidden;
+                            .buttonContent{
+                                flex: 0 0 100%;
+                                display: flex;
+                                transform: translateX(0%);
+                                transition: .4s ease-in-out transform;
+                                &.active{
+                                    transform: translateX(-100%);
+                                }
+                                .section{
+                                    flex: 0 0 100%;
+                                    padding: 8px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    gap: 5px;
+                                    span{
+                                        &.title{
+                                            font-size: 1em;
+                                        }
+                                        &.icon{
+                                            font-size: .9em;
+                                        }
+                                    }
+                                }
+                            }
+                            
+                        }
+                        a{
+                            display: flex;
+                            align-items: center;
+                            font-size: 1em;
+                            gap: 5px;
+                            .icon{
+                                font-size: .8em;
+                                fa-icon{
+                                    display: flex;
+                                }
+                            }
+                            &:hover{
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: map.get($brakePoints, "small")){
+    .container{
+        .cartBottomContainer{
+            .itemsListContainer{
+                .itemsTable{
+                    .itemsTableBody{
+                        .itemsTableContainer{
+                            .gridRow{
+                                .gridCeil{
+                                    &.brand{
+                                        grid-column: span 2;
+                                    }
+                                    &.quanity{
+                                        grid-column: span 2;
+                                        .ceilData{
+                                            .action{
+                                                display: flex;
+                                                .buttonContainer{
+                                                    flex: 0 0 25px;
+                                                    display: flex;
+                                                    justify-content: center;
+                                                    align-items: center;
+                                                    button{
+                                                        display: flex;
+                                                        justify-content: center;
+                                                        align-items: center;
+                                                        fa-icon{
+                                                            display: flex;
+                                                        }
+                                                    }
+                                                }
+                                                .valueContainer{
+                                                    .value{
+                                                        display: block;
+                                                        width: 40px;
+                                                        text-align: center;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.price{
+                                        grid-column: span 1;
+                                        .ceilData{
+                                            justify-content: flex-end;
+                                        }
+                                        .value{
+                                            display: flex;
+                                            gap: 5px;
+                                        }
+                                    }
+                                    &.totalPrice{
+                                        .ceilData{
+                                            justify-content: flex-end;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .orderSummaryContainer{
+                .orderDataContainer{
+                    .actionContainer{
+                        .buttonContainer{
+                            button{
+                                width: 250px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: map.get($brakePoints, "medium")){
+    .container{
+        .cartBottomContainer{
+            .itemsListContainer{
+                .itemsTable{
+                    .itemsTableBody{
+                        .itemsTableContainer{
+                            .gridRow{
+                                .gridCeil{
+                                    &.title{
+                                        .ceilData{
+                                            .descriptionContainer{
+                                                .brand{
+                                                    display: flex;
+                                                    gap: 5px;
+                                                    .title::first-letter{
+                                                        text-transform: capitalize;
+                                                    }
+                                                    .value{
+                                                        font-weight: 400;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.brand{
+                                        display: none;
+                                    }
+                                    &.quanity{
+                                        grid-column: span 1;
+                                        .ceilData{
+                                            .action{
+                                                display: flex;
+                                                .buttonContainer{
+                                                    width: 25px;
+                                                    display: flex;
+                                                    justify-content: center;
+                                                    align-items: center;
+                                                    button{
+                                                        display: flex;
+                                                        justify-content: center;
+                                                        align-items: center;
+                                                        fa-icon{
+                                                            display: flex;
+                                                        }
+                                                    }
+                                                }
+                                                .valueContainer{
+                                                    width: 40px;
+                                                    .value{
+                                                        display: block;
+                                                        text-align: center;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.price{
+                                        grid-column: span 1;
+                                        grid-column-start: 2;
+                                        .ceilData{
+                                            justify-content: flex-start;
+                                        }
+                                        .value{
+                                            display: flex;
+                                            gap: 5px;
+                                        }
+                                    }
+                                    &.totalPrice{
+                                        grid-column: span 3;
+                                        .ceilData{
+                                            justify-content: flex-end;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .orderSummaryContainer{
+                .orderDataContainer{
+                    .actionContainer{
+                        flex-direction: row-reverse;
+                        justify-content: space-between;
+                        align-items: flex-end;
+                        .buttonContainer{
+                            button{
+                                width: 250px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width: map.get($brakePoints, "large")){
+    .container{
+        .cartBottomContainer{
+            form{
+                .formContainer{
+                    flex-direction: row;
+                    gap: 10px;
+                }
+            }
+            .itemsListContainer{
+                .labelContainer{
+                    border: none;
+                }
+                .itemsTable{
+                    flex: 1 0px;
+                    display: flex;
+                    flex-direction: column;
+                    .itemsTableBody{
+                        .itemsTableContainer{
+                            .gridRow{
+                                .gridCeil{
+                                    &.totalPrice{
+                                        font-size: 1.2em;
+                                    }
+                                } 
+                            }
+                        }
+                    }
+                    .itemsTableBody{
+                        display: flex;
+                        flex-direction: column;
+                        flex: 1;
+                        overflow: hidden;
+                        .itemsTableContainer{
+                            flex: 1 0px;
+                            overflow-y: scroll;
+                        }
+                    }
+                }
+            }
+            .orderSummaryContainer{
+                flex: 0 0 30%;
+                .orderDataContainer{
+                    flex: 1;
+                    justify-content: space-between;
+                    .actionContainer{
+                        align-items: center;
+                        flex-direction: column;
+                        .buttonContainer{
+                            a{
+                                font-size: .9em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width: map.get($brakePoints, "extraLarge")){
+    .container{
+        .cartBottomContainer{
+            .itemsListContainer{
+                .itemsTable{
+                    .gridRow{
+                        font-size: .8em;
+                        grid-template-columns: 1fr 160px 150px 120px 65px;
+                    }
+                    .itemsTableHead{
+                        display: block;
+                        overflow-y: scroll;
+                        .gridRow{
+                            font-weight: 700;
+                            .label{
+                                p::first-letter{
+                                    text-transform: capitalize;
+                                }
+                            }
+                        }
+                    }
+                    .itemsTableBody{
+                        .itemsTableContainer{
+                            .gridRow{
+                                .gridCeil{
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    &.title{
+                                        grid-column: span 1;
+                                        .ceilData{
+                                           .descriptionContainer{
+                                            align-self: stretch;
+                                            justify-content: space-between;
+                                                .name{
+                                                    font-weight: 400;
+                                                }
+                                                .brand{
+                                                    .title{
+                                                        display: block;
+                                                    }
+                                                }
+                                           } 
+                                        }
+                                    }
+                                    &.totalPrice{
+                                        font-size: 1em;
+                                        grid-column: auto;
+                                    }
+                                    &.remove{
+                                        grid-column: 5;
+                                    }
+                                    .title{
+                                        display: none;
+                                    }
+                                }
+                                
+
+                            }
+                        }
+                    }
+                }
+            }
+            .orderSummaryContainer{
+                flex: 0 0 300px;
+            }
+        }
+    }
+}

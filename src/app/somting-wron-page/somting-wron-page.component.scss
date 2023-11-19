@@ -1,0 +1,27 @@
+.containerContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    gap: 15px;
+    .textContainer{
+        p{
+            &::first-letter{
+                text-transform: capitalize;
+            }
+        }
+    }
+    .actionsContainer{
+        .buttonContainer{
+            button{
+                padding: 8px 25px;
+                border-radius: 8px;
+                cursor: pointer;
+                span.title{
+                    text-transform: capitalize;
+                }
+            }
+        }
+    }
+}

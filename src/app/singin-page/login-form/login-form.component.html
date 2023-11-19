@@ -1,0 +1,72 @@
+<section>
+    <app-loading-box *ngIf="requestSend"></app-loading-box>
+    <div class="sectionLabel">
+        <h2 class="text-color-light-secondText">sing in simulation</h2>
+    </div>
+    <div class="sectionContent">
+        <div class="formContainer">
+            <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()"> 
+                <div class="formTabsContainer">
+                    <div class="formTabContainer">
+                        <div class="inputsContainer">
+                            <div class="inputContainer">
+                                <div class="inputBox">
+                                    <label for="username">
+                                        <input placeholder="" type="text" class="text-color-light-secondText" name="username" id="username" formControlName="username" required>
+                                        <span class="label">username</span>
+                                        <button class="clearInput text-color-light-secondText" type="button" *ngIf="!getControl('username')?.hasError('required')" (click)="clearControl('username')">
+                                            <span class="icon">
+                                                <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                                            </span>
+                                        </button>
+                                    </label>
+                                    <ng-container *ngIf="getControl('username')?.touched && getControl('username')?.invalid">
+                                        <app-error-message [errors]="getControl('username').errors"></app-error-message>
+                                    </ng-container>
+                                </div>
+                            </div>
+                            <div class="inputContainer">
+                                <div class="inputBox">
+                                    <label for="password">
+                                        <input placeholder="" [type]="regularPassHidden ? 'password' : 'text'" class="text-color-light-secondText" name="password" id="password" formControlName="password" autocomplete="off" required>
+                                        <span class="label">password</span>
+                                        <div class="containerBtnOfInput" *ngIf="!getControl('password')?.hasError('required')">
+                                            <button class="clearInput text-color-light-secondText" type="button" (click)="toggleRegularPassHidden()">
+                                                <span class="icon">
+                                                    <fa-icon [icon]="regularPassHidden ? icon.faEyeSlash : icon.faEye"></fa-icon>
+                                                </span>
+                                            </button>
+                                            <button class="clearInput text-color-light-secondText" type="button" (click)="clearControl('password')">
+                                                <span class="icon">
+                                                    <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </label>
+                                    <ng-container *ngIf="getControl('password')?.touched && getControl('password')?.invalid">
+                                        <app-error-message [errors]="getControl('password').errors"></app-error-message>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="formActionContainer">
+                    <div class="errorContainer" *ngIf="requestFinish">
+                        <span class="msg" [ngClass]="errorResponse ? 'text-color-light-error': 'text-color-light-primary'">{{infoMessage}}</span>
+                    </div>
+                    <div class="buttonContainer">
+                        <button class="bg-color-light-primary text-color-light-secondery hover-bg-color-light-primary-light" [disabled]="loginForm.invalid"> 
+                            <span class="title">
+                                sing in
+                            </span>
+                            <span class="icon">
+                                <fa-icon [icon]="icon.faRightToBracket"></fa-icon>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,52 @@
+<div class="menuContainer" @menuBg (click)="this.closeMenuContainer.emit()">
+    <div class="content bg-color-light-secondery"  @menuContent (click)=$event.stopPropagation()>
+        <div class="btnsContainer bg-color-light-primary">
+            <button class="bg-color-light-secondery text-color-light-primary">
+                <a href="tel:+0100000000">
+                    <span class="icon">
+                        <fa-icon [icon]="icon.faPhone"></fa-icon>
+                    </span>
+                </a>
+            </button>
+            <button class="bg-color-light-secondery text-color-light-primary">
+                <a href="mailto:test@test.com">
+                    <span class="icon">
+                        <fa-icon [icon]="icon.faEnvelope"></fa-icon>
+                    </span>
+                </a>
+            </button>
+            <button class="bg-color-light-secondery text-color-light-primary">
+                <a [routerLink]="['account']">
+                    <span class="icon">
+                        <fa-icon [icon]="icon.faUser"></fa-icon>
+                    </span>
+                </a>
+            </button>
+            <button class="bg-color-light-secondery text-color-light-primary">
+                <a [routerLink]="'whishlist'">
+                    <span class="icon">
+                        <fa-icon [icon]="icon.faHeart"></fa-icon>
+                    </span>
+                </a>
+            </button>
+        </div>
+        <div class="categoriesContainer text-color-light-text bg-color-light-secondery">
+            <div class="title">
+                <p>all categories</p>
+            </div>
+            <div class="categories">
+                <nav>
+                    <ul>
+                        <li *ngFor="let category of categoriesList">
+                            <a [routerLink]="['category', category]">
+                                <span>
+                                    {{category}}
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

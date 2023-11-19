@@ -1,0 +1,20 @@
+<div class="container bg-color-light-backgorund cartPage">
+    <div class="cartTopContainer">
+        <div class="title">
+            <h1 class="text-color-light-secondText">
+                <span class="icon">
+                    <fa-icon [icon]="icon.faShoppingCart"></fa-icon>
+                </span>
+                my cart
+            </h1>
+        </div>
+    </div>
+    <div class="cartBottomContainer">
+        <ng-container>
+            <app-no-item *ngIf="countCartListItems == 0 else list"></app-no-item>
+        </ng-container>
+        <ng-template #list>
+            <app-cart-sections></app-cart-sections>
+        </ng-template>
+    </div>
+</div>

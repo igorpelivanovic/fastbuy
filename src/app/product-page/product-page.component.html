@@ -1,0 +1,188 @@
+<div class="container bg-color-light-backgorund productPage" *ngIf="!loading" >
+    <ng-container *ngIf="!requestError else errorTmp">
+        <div class="content">
+            <div class="itemContainer">
+                <app-product-carousel [images]="productData.images"></app-product-carousel>
+               <div class="infoBox">
+                   <div class="infoContainer">
+                       <div class="navigateLine">
+                           <a [routerLink]="['/category/'+productData.category]" class="text-color-light-dark">
+                               <span class="icon text-color-light-primary">
+                                   <fa-icon [icon]="icon.faChevronLeft"></fa-icon>
+                               </span>
+                               <span class="title">
+                                   Back to
+                               </span>
+                               <span class="categoryValue text-color-light-primary">
+                                   {{productData.category}}
+                               </span>
+                           </a>
+                       </div>
+                       <div class="productInfo">
+                           <div class="productContainer">
+                               <div class="titleProductContainer">
+                                   <h1 class="text-color-light-secondText">{{productData.title}}</h1>
+                               </div>
+                               <div class="ratingProductContainer text-color-light-text-light">
+                                   <div class="ratingContainer">
+                                       <app-rating [curentRating]="productData.rating" [maxRating]="5"></app-rating>
+                                   </div>
+                                   <div class="btnContainer">
+                                       <span class="reviewNum">
+                                           {{countOfFullCommments}} review(s)
+                                       </span>
+                                       <span class="title text-color-light-primary-light" (click)="goToCommentsBox()">
+                                           preview
+                                       </span>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="productContainer">
+                               <div class="priceContainer">
+                                   <p>
+                                       <span class="currentPrice">
+                                           {{productData.price | discountPercentage: productData.discountPercentage | currency}}
+                                       </span>
+                                       <span class="oldPrice text-color-light-text-light">
+                                           {{productData.price | currency}}
+                                       </span>
+                                   </p>
+                               </div>
+                           </div>
+                           <div class="productContainer">
+                               <div class="brandContainer">
+                                   <span class="label">
+                                       brand:
+                                   </span>
+                                   <span class="value">
+                                       {{productData.brand}}
+                                   </span>
+                               </div>
+                           </div>
+                           <div class="productContainer">
+                               <div class="descriptionContainer text-color-light-text-light">
+                                   <p>{{productData.description}}</p>
+                               </div>
+                           </div>
+                           <div class="btnsContainer">
+                               <div class="btnContainer cart">
+                                   <form [formGroup]="cartForm" (ngSubmit)="addToCart()">
+                                       <div class="quanityValueContainer bg-color-light-backgorund">
+                                           <button class="remove" type="button" (click)="decrement()">
+                                               <span class="icon">
+                                                   <fa-icon [icon]="icon.faMinus"></fa-icon>
+                                               </span>
+                                           </button>
+                                           <input type="number" name="" id="" value="2" readonly="readonly" formControlName="quanity">
+                                           <button class="add" type="button" (click)="increment()">
+                                               <span class="icon">
+                                                   <fa-icon [icon]="icon.faPlus"></fa-icon>
+                                               </span>
+                                           </button>
+                                       </div>
+                                       <div class="addToCartContainer bg-color-light-primary">
+                                           <button class="text-color-light-secondery">
+                                               <span class="title">
+                                                   add to cart
+                                               </span>
+                                           </button>
+                                       </div>
+                                   </form>
+                               </div>
+                               <div class="btnContainer whislist bg-color-light-primary-light">
+                                   <button class="text-color-light-secondery" (click)="toggleProductToWhishlist()">
+                                       <span class="icon">
+                                           <fa-icon [icon]="icon.faHeart"></fa-icon>
+                                       </span>
+                                       <span class="title">
+                                            {{ itemInWhishList |whishlistBtn}}
+                                       </span>
+                                   </button>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div class="commentContainer" #commentsBox>
+                <div class="topBox">
+                    <div class="title">
+                        <h2 class="text-color-light-secondText">customers reviews</h2>
+                    </div>
+                    <div class="ratingPreview">
+                        <div class="value text-color-light-secondAccent">
+                            {{productData.rating | ratingValue: 5}}
+                        </div>
+                        <div class="stars">
+                            <app-rating [curentRating]="productData.rating" [maxRating]="5"></app-rating>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottomBox text-color-light-text-light">
+                    <div class="commentsContainer" *ngIf="commentsData.length > 0">
+                        <div class="titleList">
+                            <p>
+                                showing 
+                                <span class="countOfComments text-color-light-secondAccent">
+                                    {{commentsData.length}} of {{countOfFullCommments}}
+                                </span>
+                                reviews
+                            </p>
+                            <button *ngIf="!fullLoadComments" (click)="getComments(0)" class="text-color-light-primary-light">
+                                <span class="title">
+                                    See alls
+                                </span>
+                                <span class="icon">
+                                    <fa-icon [icon]="icon.faChevronRight"></fa-icon>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="listsBox">
+                                <div class="listContainer">
+                                    <div class="commentBox" *ngFor="let comment of commentsData">
+                                        <div class="userInfoContainer text-color-light-text">
+                                            <span class="icon">
+                                                <fa-icon [icon]="icon.faUser"></fa-icon>
+                                            </span>
+                                            <span class="userName">
+                                                {{comment.user.username}}
+                                            </span>
+                                        </div>
+                                        <div class="commentContainer text-color-light-secondText">
+                                            <p>
+                                                {{comment.body}}                                        
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <button class="loadMoteComments text-color-light-primary-light" *ngIf="!fullLoadComments && !loadingComments" (click)="getComments()">
+                                        <span class="title">
+                                            More comments
+                                        </span>
+                                    </button>
+                                    <div class="loadingContainer" *ngIf="loadingComments">
+                                        <app-loader></app-loader>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="notFound" *ngIf="commentsData.length == 0">
+                        <p>
+                            <span class="icon">
+                                <fa-icon [icon]="icon.faCommentSlash"></fa-icon>
+                            </span>
+                            <span class="title">
+                                no comments
+                            </span>
+                        </p>
+                    </div>
+                </div>
+           </div>
+        </div>
+    </ng-container>
+    <ng-template #errorTmp>
+        <app-not-found></app-not-found>
+    </ng-template>
+</div>
+<div class="loadingContainer" *ngIf="loading">
+    <app-loader></app-loader>
+</div>

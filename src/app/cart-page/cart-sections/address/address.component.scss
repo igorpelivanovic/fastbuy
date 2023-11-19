@@ -1,0 +1,303 @@
+@use "sass:map";
+@import "../../../../style/variables";
+
+
+:host{
+    flex: 0 0 100%;
+}
+.addressContainer{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    >.labelContainer{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        button{
+            width: fit-content;
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+            align-items: center;
+            font-size: 1em;
+            cursor: pointer;
+            span.icon{
+                fa-icon{
+                    display: flex;
+                    font-size: .8em;
+                }
+            }
+            span.title{
+                font-size: .9em;
+                &::first-letter{
+                    text-transform: capitalize;
+                }
+            }
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+        h2{
+            text-transform: capitalize;
+            font-size: 1.15em;
+        }
+    }
+    .addressItems{
+        flex: 1 0px;
+        display: flex;
+        flex-direction: column;
+        .addressOptions{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            &::-webkit-scrollbar {
+                width: 5px;
+            }
+            &::-webkit-scrollbar-track {
+                background-color: transparent;
+            }
+            .addressOption{
+                border-radius: 8px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                >label{
+                    display: flex;
+                    width: 100%;
+                    padding: 10px;
+                    gap: 12px;
+                    align-items: center;
+                    cursor: pointer;
+                    >input{
+                        display: none;
+                    }
+                    >.indicatorContainer{
+                        width: 16px;
+                        height: 16px;
+                        border-radius: 50%;
+                        box-sizing: content-box;
+                    }
+                    .titleOption{
+                        p{
+                            font-size: 1em;
+                            display: flex;
+                            align-items: baseline;
+                            gap: 15px;
+                            span.name{
+                                text-transform: capitalize;
+                                font-weight: 600;
+                            }
+                            span.address{
+                                font-weight: 500;
+                                font-size: .85em;
+                                text-transform: capitalize;
+                            }
+                        }
+                    }
+                }
+                .newAddressContianer{
+                    padding-inline: 15px;
+                    padding-bottom: 40px;
+                    .inputsGridSystem{
+                        display: grid;
+                        grid-template-columns: 1fr;
+                        gap: 20px 15px;
+                        .inputGridField{
+                            label{
+                                display: flex;
+                                flex-direction: column;
+                                font-size: .9em;
+                                position: relative;
+                                .labelContainer{
+                                    span.label{
+                                        font-size: .85em;
+                                        text-transform: capitalize;
+                                        font-weight: 500;
+                                    }
+                                }
+                                .inputContainer{
+                                    padding: 5px 10px;
+                                    border-radius: 6px;
+                                    position: relative;
+                                    input{
+                                        display: block;
+                                        width: 100%;
+                                        font-weight: 500;
+                                        &::-webkit-outer-spin-button,
+                                        &::-webkit-inner-spin-button {
+                                            -webkit-appearance: none;
+                                            margin: 0;
+                                        }
+                                        &[type=number]{
+                                            appearance: textfield;
+                                        }
+                                    }
+                                    .buttonsContainer{
+                                        position: absolute;
+                                        top: 50%;
+                                        right: 10px;
+                                        transform: translateY(-50%);
+                                        .buttonContainer{
+                                            button{
+                                                cursor: pointer;
+                                                span.icon{
+                                                    fa-icon{
+                                                        display: flex;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        >.inputContainer{
+                            //background-color: red;
+                            &.firstName, &.lastName, &.email, &.phoneNumber{
+                                grid-column: span 2;
+                            }
+                            &.streetAddress{
+                                grid-column: 1/4;
+                            }
+                            &.city{
+                                grid-column: span 2;
+                            }
+                            &.zip{
+                                grid-column: span 1;
+                            }
+                            label{
+                                display: flex;
+                                flex-direction: column;
+                                font-size: .9em;
+                                position: relative;
+                                span.label{
+                                    font-size: .9em;
+                                    text-transform: capitalize;
+                                    font-weight: 500;
+                                }
+                                input{
+                                    width: 100%;
+                                    padding: 5px 10px;
+                                    display: block;
+                                    border-radius: 6px;
+                                    font-weight: 500;
+                                    background-color: transparent;
+                                    &::-webkit-outer-spin-button,
+                                    &::-webkit-inner-spin-button {
+                                        -webkit-appearance: none;
+                                        margin: 0;
+                                    }
+                                    &[type=number]{
+                                        appearance: textfield;
+                                    }
+                                }
+                                span.errorMsg{
+                                    position: absolute;
+                                    top: 100%;
+                                    left: 0;
+                                    font-size: .8em;
+                                    &::first-letter{
+                                        text-transform: capitalize;
+                                    }
+                                }
+                            }
+            
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: map.get($brakePoints, "small")){
+    .addressContainer{
+        .addressItems{
+            .addressOptions{
+                .addressOption{
+                    .newAddressContianer{
+                        .inputsGridSystem{
+                            grid-template-columns: repeat(2, 1fr);
+                            .inputGridField{
+                                &.firstName, &.lastName, &.email, &.phoneNumber, &.city, &.zip{
+                                    grid-column: span 1;
+                                }
+                                &.streetAddress{
+                                    grid-column: span 2;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: map.get($brakePoints, "medium")){
+    .addressContainer{
+        .addressItems{
+            .addressOptions{
+                .addressOption{
+                    .newAddressContianer{
+                        .inputsGridSystem{
+                            grid-template-columns: repeat(2, 1fr);
+                            .inputGridField{
+                                &.firstName, &.lastName, &.email, &.phoneNumber, &.city, &.zip{
+                                    grid-column: span 1;
+                                }
+                                &.streetAddress{
+                                    grid-column: span 2;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: map.get($brakePoints, "large")){
+    .addressContainer{
+        .addressItems{
+            .addressOptions{
+                flex: 1 0px;
+            }
+        }
+    }
+}
+
+@media (min-width: map.get($brakePoints, "extraLarge")){
+    .addressContainer{
+        .addressItems{
+            .addressOptions{
+                flex: 1 0px;
+                overflow-y: scroll;
+                .addressOption{
+                    .newAddressContianer{
+                        .inputsGridSystem{
+                            grid-template-columns: repeat(6, 1fr);
+                            .inputGridField{
+                                &.firstName, &.lastName, &.email, &.phoneNumber{
+                                    grid-column: span 2;
+                                }
+                                &.streetAddress{
+                                    grid-column: 1/4;
+                                }
+                                &.city{
+                                    grid-column: span 2;
+                                }
+                                &.zip{
+                                    grid-column: span 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+<div class="formTabContainer" [formGroup]="formGroup">
+    <div class="inputsTabFormContainer">
+        <div class="inputTabFormContainer">
+            <label for="firstName">
+                <div class="inputBoxContainer">
+                    <div class="labelContainer">
+                        <span class="label text-color-light-text-light">first name</span>
+                    </div>
+                    <div class="inputContainer">
+                        <input type="text" id="firstName" name="firstName" class="text-color-light-text-light" spellcheck="false" formControlName="firstName" autocomplete="off">
+                        <div class="buttonsContainer" *ngIf="!getFormControl('firstName').hasError('required')">
+                            <div class="buttonContainer">
+                                <button type="button" (click)="clearFormControl('firstName')">
+                                    <span class="icon text-color-light-secondText">
+                                        <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <ng-container *ngIf="getFormControl('firstName').touched && getFormControl('firstName').invalid">
+                            <app-error-message [errors]="getFormControl('firstName').errors"></app-error-message>
+                        </ng-container>
+                    </div>
+                </div>
+            </label>
+        </div>
+        <div class="inputTabFormContainer">
+            <label for="lastName">
+                <div class="inputBoxContainer">
+                    <div class="labelContainer">
+                        <span class="label text-color-light-text-light">last name</span>
+                    </div>
+                    <div class="inputContainer">
+                        <input type="text" id="lastName" name="lastName" class="text-color-light-text-light" spellcheck="false" formControlName="lastName" autocomplete="off">
+                        <div class="buttonsContainer" *ngIf="!getFormControl('lastName').hasError('required')">
+                            <div class="buttonContainer">
+                                <button type="button" (click)="clearFormControl('lastName')">
+                                    <span class="icon text-color-light-secondText">
+                                        <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <ng-container *ngIf="getFormControl('lastName').touched && getFormControl('lastName').invalid">
+                            <app-error-message [errors]="getFormControl('lastName').errors"></app-error-message>
+                        </ng-container>
+                    </div>
+                </div>
+            </label>
+        </div>
+    </div>
+</div>

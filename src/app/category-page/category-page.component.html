@@ -1,0 +1,12 @@
+<div class="container">
+    <ng-container *ngIf="!isErrorRequest else notFoundTmp">
+        <div class="titleContainer">
+            <h1>{{titleValue}}</h1>
+        </div>
+        <app-grid-system [loading]="loading" [products]="productsList"></app-grid-system>
+    </ng-container>
+    <ng-template #notFoundTmp> 
+        <app-not-found></app-not-found>
+    </ng-template>
+</div>
+

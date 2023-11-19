@@ -1,0 +1,184 @@
+@use "sass:map";
+@import "./../../../style/variables";
+.gridSystemContainer{
+    width: 100%;   
+    display: flex;
+    .itemsContainer{
+        flex: 1 ;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        .itemsInfoLine{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 15px;
+            .btnsContainer{
+                flex: 1;
+                &.filters{
+                    order: 1;
+                }
+                &.sort{
+                    order: 2;
+                    position: relative;
+                    
+                }
+                &.filtersList{
+                    order: 3;
+                    flex: 0 0 100%;
+                    display: flex;
+                    gap: 15px;
+                    flex-wrap: wrap;
+                    .btnContainer{
+                        display: flex;
+                        font-size: .9em;
+                        padding: 5px 10px;
+                        align-items: center;
+                        border-radius: 5px;
+                        gap: 5px;
+                        .title{
+                            &::first-letter{
+                                text-transform: capitalize;
+                            }
+                        }
+                        button{
+                            cursor: pointer;
+                            span{
+                                fa-icon{
+                                    display: flex;
+                                }
+                            }
+                        }
+                    }
+                }
+                >button{
+                    padding: 10px;
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-radius: 10px;
+                    font-size: .8em;
+                    cursor: pointer;
+                    fa-icon{
+                        display: flex;
+                    }
+                    .title{
+                        text-transform: capitalize;
+                        margin: 0 auto 0 10px;
+                    }
+                }
+            }
+        }
+        .gridContainer{
+            display: grid;
+            justify-content: center;
+            gap: 40px 30px;
+            grid-template-columns: repeat(1, 1fr);
+            &:has(.noResultsContainer){
+               height: 100%;
+            }
+        }
+    }
+}
+@media (min-width: map.get($brakePoints, "small")){
+    .gridSystemContainer{
+        .itemsContainer{
+            .gridContainer{
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .itemsInfoLine{
+                justify-content: flex-end;
+                .btnsContainer{
+                    font-size: .8em;
+                    >button{
+                        font-size: 1em;
+                    }
+                    &.filtersList{
+                        order: 3;
+                        font-size: 1em;
+                    }
+                    &.filters{
+                        order: 1;
+                    }
+                    &.sort{
+                        order: 2;
+                    }
+                }
+            }
+        }
+    }
+            
+            
+            
+
+}
+    @media (min-width: map.get($brakePoints, "medium")){
+        .gridSystemContainer{
+            .itemsContainer{
+                .gridContainer{
+                    grid-template-columns: repeat(3, 1fr);
+                }
+                .itemsInfoLine{
+                    .btnsContainer{
+                        &.filters{
+                            flex: 0 0 content;
+                            button{
+                                gap: 10px;
+                                span.title{
+                                    margin: 0;
+                                }
+                            }
+                        }
+                        &.sort{
+                            flex: 0 0 content;
+                        }
+                    }
+                }
+            }
+        }
+
+                
+
+    }
+    
+    @media (min-width: map.get($brakePoints, "large")){
+        .gridSystemContainer{
+            .itemsContainer{
+                flex: 1 0 50%;
+                .gridContainer{
+                    grid-template-columns: repeat(2, 1fr);
+                }
+                .itemsInfoLine{
+                    align-items: flex-start;
+                    .btnsContainer{
+                        &.filters{
+                            display: none;
+                        }
+                        &.filtersList{
+                            flex: 1;
+                            order: 1;
+                        }
+                    }
+                }
+                
+            }
+        }
+
+
+
+    }
+    @media (min-width: map.get($brakePoints, "extraLarge")){
+    .gridSystemContainer{
+        .itemsContainer{
+            flex: 1 0 50%;
+            .gridContainer{
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    }
+        
+                
+
+    }
+    

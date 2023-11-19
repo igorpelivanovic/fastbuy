@@ -1,0 +1,136 @@
+@use "sass:map";
+@import "./../../../style/variables";
+
+
+    .btnTopContainer{
+        position: fixed;
+        bottom: 20px;
+        right: 10px;
+        width: 50px;
+        aspect-ratio: 1/1;
+        button{
+            width: 100%;
+            height: 100%;
+            border-radius: 50px;
+            display: flex;
+            overflow: hidden;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.05em;
+            cursor: pointer;
+            fa-icon{
+                display: flex;
+            }
+        }
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        padding-block: 15px;
+        gap: 20px;
+        .footerBox{
+            display: flex;
+            justify-content: center;
+            &.logo{
+                .logoContainer{
+                    width: 60%;
+                    img{
+                        filter: brightness(0) saturate(100%) invert(28%) sepia(45%) saturate(565%) hue-rotate(191deg) brightness(99%) contrast(86%);
+                    }
+                }
+            }
+            &.contacts{
+                gap: 20px;
+                button{
+                    width: 45px;
+                    aspect-ratio: 1/1;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    cursor: pointer;
+    
+                    fa-icon{
+                        display: flex;
+                        font-size: 1.1em;
+                    }
+                }
+            }
+            &.copyRight{
+                font-size: .8em;
+                p{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    span{
+                        &::first-letter{
+                            text-transform: capitalize;
+                        }
+                    }
+                    a:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+@media (min-width: map.get($brakePoints, "small")){
+    .container{
+        flex-direction: row;
+        flex-wrap: wrap;
+        .footerBox{
+            &.contacts, &.logo{
+                flex: 1 0 20%;
+            }
+            &.contacts{
+                justify-content: flex-end;
+            }
+            &.logo{
+                justify-content: flex-start;
+            }
+            &.copyRight{
+                flex: 0 0 100%;
+                p{
+                    flex-direction: row;
+                }
+            }
+        }   
+    }
+
+}
+@media (min-width: map.get($brakePoints, "large")){
+        .btnTopContainer{
+            right: 30px;
+            bottom: 30px;
+        }
+        .container{
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            .footerBox{
+                &.logo{
+                    .logoContainer{
+                        width: 50%;
+                    }
+                }
+            }   
+        }
+
+}
+@media (min-width: map.get($brakePoints, "extraLarge")){
+        .container{
+            .footerBox{
+                &.logo{
+                    flex: 0 0 20%;
+                    .logoContainer{
+                        width: 100%;
+                    }
+                }
+            }   
+        }
+
+}

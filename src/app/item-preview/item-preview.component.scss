@@ -1,0 +1,129 @@
+@use "sass:map";
+@import "./../../style/variables";
+
+.itemContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 400px;
+    padding: 20px;
+    gap: 10px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    &:hover .hoverContainer{
+        transform: translateX(0%);
+    }
+    .discountPercentageContianer{
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 5px 14px;
+        border-bottom-right-radius: 20px;
+        span.title{
+            position: relative;
+            z-index: 10;
+            font-size: .9em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+    }
+    .hoverContainer{
+        position: absolute;
+        top: 10px;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 5px;
+        transition: .3s;
+        button{
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            overflow: hidden;
+            transition: .3s;
+            fa-icon{
+                display: flex;
+            }
+            cursor: pointer;
+        }
+    }
+    .imgContainer{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        flex: 1;
+        position: relative;
+        img{
+            position: absolute;
+            width: 100%;
+            max-height: 200px;
+        }
+    }
+    .infoContainer{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        justify-content: flex-end;
+       .title{
+            h2{
+                font-size: .9em;
+                &::first-letter{
+                    text-transform: capitalize;
+                }
+            }
+        
+       }
+       .ratingContianer{
+            margin-block: 0px auto;
+            .rating{
+                font-size: .8em;
+                display: flex;
+            }
+       }
+       .detailsContainer{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .priceContainer{
+            display: flex;
+            gap: 5px;
+            align-items: flex-end;
+            .newPrice{
+                font-weight: 700;
+                font-size: 1.2em;
+            }
+            .oldPrice{
+                padding-inline: 1px;
+                font-weight: 700;
+                text-decoration: line-through ;
+            }
+            }
+            button{
+                width: 40px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                overflow: hidden;
+                cursor: pointer;
+                fa-icon{
+                    display: flex;
+                    font-size: 1.2em;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: map.get($brakePoints, "medium")){
+    .hoverContainer{
+        transform: translateX(100%);
+    }
+}

@@ -5,6 +5,8 @@
 export const environment = {
   production: false
 };
+export const baseUrl = "https://dummyjson.com";
+export const AppName = "Fast Buy"
 
 /*
  * For easier debugging in development mode, you can import the following file

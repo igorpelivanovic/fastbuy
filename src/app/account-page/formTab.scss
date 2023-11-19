@@ -1,0 +1,203 @@
+@use "sass:map";
+@import "../../style/variables";
+
+:host{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+}
+.formTabContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    height: 100%;
+    .inputsTabFormContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 20px;
+        flex: 1 0px;
+        &.row{
+            flex: 0 0;
+        }
+        .inputTabFormContainer{
+            label{
+                display: block;
+                width: fit-content;
+                width: 90%;
+                margin: 0 auto;
+                .inputBoxContainer{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 5px;
+                    font-weight: 500;
+                    .labelContainer{
+                        display: flex;
+                        justify-content: flex-end;
+                        span.label{
+                            text-transform: capitalize;
+                            font-size: .95em;
+                            &::after{
+                                content: ":";
+                            }
+                        }
+                    }
+                    .inputContainer{
+                        position: relative;
+                        border-radius: 6px;
+                        padding: 3px 5px;
+                        border: 1px solid #b7b1b1;
+                        display: flex;
+                        flex: 1 0 0px;
+                        width: 100%;
+                        input{
+                            width: 100%;
+                            flex-basis: 100%;
+                            font-weight: 500;
+                            display: block;
+                            background-color: transparent;
+                        }
+                        .buttonsContainer{
+                            position: absolute;
+                            top: 50%;
+                            right: 5px;
+                            transform: translateY(-50%);
+                            display: flex;
+                            gap: 5px;
+                            button{
+                                cursor: pointer;
+                                span.icon{
+                                    fa-icon{
+                                        display: flex;
+                                    }
+                                }
+                            }
+                        }
+                        .errorContainer{
+                            position: absolute;
+                            top: 100%;
+                            left: 0;
+                            width: 100%;
+                            font-size: .85em;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: map.get($brakePoints, "small")){
+    .formTabContainer{
+        .inputsTabFormContainer{
+            .inputTabFormContainer{
+                label{
+                    .inputBoxContainer{
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 10px;
+                        .labelContainer{
+                            flex: 0 0 150px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width: map.get($brakePoints, "medium")){
+    .formTabContainer{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        height: 100%;
+        .inputsTabFormContainer{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 20px;
+            flex: 1 0px;
+            .inputTabFormContainer{
+                label{
+                    width: fit-content;
+                    .inputBoxContainer{
+                        width: 400px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width: map.get($brakePoints, "large")){
+    .formTabContainer{
+        .inputsTabFormContainer{
+            gap: 30px;
+            .inputTabFormContainer{
+                &.zip{
+                    label{
+                        .inputBoxContainer{
+                                width: 300px;
+                            .inputContainer{
+                                flex: 0 0 150px;
+                            }
+                        }
+                    }
+                }
+                label{
+                    margin: 0;
+                    .inputBoxContainer{
+                        align-items: center;
+                        gap: 10px;
+                        width: 400px;
+                        .labelContainer{
+                            flex: 0 0 150px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width: map.get($brakePoints, "extraLarge")){
+    .formTabContainer{
+        .inputsTabFormContainer{
+            &.row{
+                flex-direction: row;
+                flex: 0 0;
+            }
+            gap: 30px;
+            .inputTabFormContainer{
+                &.zip{
+                    label{
+                        .inputBoxContainer{
+                                width: 300px;
+                            .labelContainer{
+                                flex: 0 0 100px;
+                            }
+                            .inputContainer{
+                                flex: 0 0 150px;
+                            }
+                        }
+                    }
+                }
+                label{
+                    margin: 0;
+                    .inputBoxContainer{
+                        align-items: center;
+                        gap: 10px;
+                        width: 400px;
+                        .labelContainer{
+                            flex: 0 0 150px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

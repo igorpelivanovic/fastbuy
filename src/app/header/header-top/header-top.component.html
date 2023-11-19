@@ -1,0 +1,38 @@
+<div class="headerTop bg-color-light-secondAccent">
+    <div class="container">
+        <div class="headerTopContacts">
+            <div class="contact">
+                <a href="tel:+0100000000">
+                    <span class="icon tel">
+                        <fa-icon [icon]="icon.faPhone"></fa-icon>
+                    </span>
+                    <span class="title">
+                        calling us
+                    </span>
+                </a>
+            </div>
+            <div class="contact">
+                <a href="mailto:test@test.com">
+                    <span class="icon">
+                        <fa-icon [icon]="icon.faEnvelope"></fa-icon>
+                    </span>
+                    <span class="title">
+                        send mail
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="headerTopFavourite">
+            <div class="favourite">
+                <a [routerLink]="['whishlist']">
+                    <span class="icon">
+                        <fa-icon [icon]="icon.faHeart"></fa-icon>
+                    </span>
+                    <span class="title">
+                        whishlist
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

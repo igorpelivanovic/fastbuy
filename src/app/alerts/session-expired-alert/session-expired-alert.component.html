@@ -1,0 +1,81 @@
+<div class="alertsContainer">
+    <div class="alertBox bg-color-light-secondBackgorund">
+        <div class="messageContainer">
+            <div class="titleContainer">
+                <div class="iconContainer">
+                    <span class="icon text-color-light-primary-light">
+                        <fa-icon [icon]="icon.faClock"></fa-icon>
+                    </span>
+                </div>
+                <div class="messsageContainer">
+                    <h2 class="text-color-light-secondText">your session has expired</h2>
+                    <p class="text-color-light-text-light">please login to your account</p>
+                </div>
+            </div>
+        </div>
+        <div class="formContainer">
+            <form [formGroup]="form" (submit)="submitForm()">
+                <div class="inputsContainer">
+                    <div class="inputContainer">
+                        <label for="alertUsername">
+                            <input type="text" placeholder="username" id="alertUsername" name="username" spellcheck="false" autocomplete="off" class="text-color-light-secondText" formControlName="username">
+                            <div class="buttonsContainer" *ngIf="!getControllForm('username').hasError('required')">
+                                <div class="buttonContainer">
+                                    <button type="button" class="text-color-light-secondText" (click)="clearFormControll('username')">
+                                        <span class="icon">
+                                            <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="inputContainer text-color-light-text-light">
+                        <label for="alertPassword">
+                            <input [type]="showPassword ? 'text' : 'password'" placeholder="password" id="alertPassword" name="password" spellcheck="false" autocomplete="off"  class="text-color-light-secondText" formControlName="password">
+                            <div class="buttonsContainer" *ngIf="!getControllForm('password').hasError('required')">
+                                <div class="buttonContainer">
+                                    <button type="button" class="text-color-light-secondText" (click)="toggleShowPassword()">
+                                        <span class="icon">
+                                            <fa-icon [icon]="showPassword ? icon.faEye : icon.faEyeSlash"></fa-icon>
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="buttonContainer">
+                                    <button type="button" class="text-color-light-secondText" (click)="clearFormControll('password')">
+                                        <span class="icon">
+                                            <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="errorMsgContainer" *ngIf="showErrorMsg">
+                        <span class="errorMsg text-color-light-error">{{errorMsg}}</span>
+                    </div>
+                </div>
+                <div class="actionsContainer">
+                    <div class="buttonContainer">
+                        <button class="text-color-light-secondText" type="button" (click)="goToHome()">
+                            <span class="title">
+                                cancel
+                            </span>
+                        </button>
+                    </div>
+                    <div class="buttonContainer">
+                        <button class="text-color-light-secondery" [ngClass]="form.valid ? 'bg-color-light-primary hover-bg-color-light-primary-light' : 'bg-color-light-text-light' " [disabled]="form.invalid">
+                            <span class="title">
+                                login
+                            </span>
+                            <span class="icon">
+                                <fa-icon [icon]="icon.faRightToBracket"></fa-icon>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <app-full-screen-loader *ngIf="isLoading"></app-full-screen-loader>
+    </div>
+</div>

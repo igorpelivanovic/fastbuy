@@ -1,0 +1,38 @@
+<div class="categoriesContainer bg-color-light-secondAccent">
+    <div class="container">
+        <nav>
+            <ul>
+                <li class="categories text-color-light-secondText" clickOutside (clickedOutside)="handelClickOutside($event)">
+                    <button (click)="showAllCategories = !showAllCategories" class="bg-color-light-primary text-color-light-secondery hover-bg-color-light-primary-light">
+                        <span class="icon">
+                            <fa-icon class="burger" [icon]="icon.faBars"></fa-icon>
+                        </span>
+                        <span class="title">
+                            all categories
+                        </span>
+                        <span class="arrow" [ngClass]="{rotate: showAllCategories}">
+                            <fa-icon [icon]="icon.faChevronDown"></fa-icon>
+                        </span>
+                    </button>
+                    <div class="allCategoriesContainer bg-color-light-secondery-light" @animateAllCategoriesContainer  *ngIf="showAllCategories">
+                        <nav>
+                            <ul>
+                                <li *ngFor="let category of categoriesList" (click)="showAllCategories = false">
+                                    <a [routerLink]="['category', category]" class="text-color-light-secondText hover-bg-color-light-primary-light hover-text-color-light-secondery">
+                                        {{category}}
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </li>
+                <li *ngFor="let category of categoriesList.slice(0,4)">
+                    <a [routerLink]="['category', category]" class="hover-bg-color-light-primary-light">
+                        {{category}}
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+    </div>
+</div>

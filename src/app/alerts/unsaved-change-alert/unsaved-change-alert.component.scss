@@ -1,0 +1,58 @@
+@use "sass:map";
+@import "./../../../style/variables";
+
+
+.alertsContainer{
+    .alertBox{
+        gap: 5px;
+        .alertTitleContainer{
+            h2{
+                font-size: 1.1em;
+                &::first-letter{
+                    text-transform: capitalize;
+                }
+            }
+        }
+        .alertMsgContainer{
+            p{
+                font-size: .85em;
+                span.row{
+                    display: block;
+                    margin-block: 10px;
+                    &::first-letter{
+                        text-transform: capitalize;
+                    }
+                }
+            }
+        }
+        .alertActionsContainer{
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            .buttonContainer{
+                button{
+                    padding: 5px 16px;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    span.title{
+                        text-transform: capitalize;
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+@media (min-width: map.get($brakePoints, "small")){
+    .alertsContainer{
+        .alertBox{
+            .alertActionsContainer{
+                justify-content: flex-end;
+                flex-wrap: nowrap;
+            }
+        }
+    }
+}

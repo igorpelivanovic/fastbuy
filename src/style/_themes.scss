@@ -1,0 +1,489 @@
+@use "sass:map";
+
+body{
+    background-color: map.get(map.get($theme, "light"), "secondery-light");
+    scrollbar-color: map.get(map.get($theme, "light"), "primary") transparent;
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: map.get(map.get($theme, "light"), "primary");
+    }
+    header{
+        a:link, a:hover, a:visited, a:active{
+            color: map.get(map.get($theme, "light"), "secondery");
+        }
+        .menuContainer{
+            a:link, a:hover, a:visited, a:active{
+                color: map.get(map.get($theme, "light"), "primary");
+            }
+        }
+        .headerBottom .container .otherBtnsContainer .btnContianer.userProfile .containerOptions::after{
+            border-bottom: 8px solid map.get(map.get($theme, "light"), "secondery-light");
+
+        }
+        .menuContainer .title{
+                border-bottom: 4px solid #414b7321;
+        }
+        .content .categoriesContainer .categories{
+            scrollbar-color: map.get(map.get($theme, "light"), "primary") transparent;
+            &::-webkit-scrollbar {
+                width: 5px;
+            }
+            &::-webkit-scrollbar-track {
+                background-color: transparent;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: map.get(map.get($theme, "light"), "primary");
+            }
+        }
+        .allCategoriesContainer{
+            scrollbar-color: map.get(map.get($theme, "light"), "primary") transparent;
+            &::-webkit-scrollbar {
+                width: 5px;
+            }
+            &::-webkit-scrollbar-track {
+                background-color: transparent;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: map.get(map.get($theme, "light"), "primary");
+            }
+            a{
+                color: map.get(map.get($theme, "light"), "secondText");
+            }
+        }
+    }
+    main{
+        .container{
+            &.accountPage{
+                section.right{
+                    form{
+                        .formContainer{
+                            .formTabsContainer{
+                                .formTabContainer{
+                                    .inputsTabFormContainer{
+                                        .inputTabFormContainer{
+                                            label{
+                                                .inputBoxContainer{
+                                                    &:has(.inputContainer input:focus){
+                                                        .labelContainer{
+                                                            span{
+                                                                color: map.get(map.get($theme, "light"), "primary");
+                                                            }
+                                                        }
+                                                        .inputContainer{
+                                                            border-color: map.get(map.get($theme, "light"), "primary");
+                                                        }
+                                                    }
+                                                    &:has(.inputContainer span.errorMsg){
+                                                        .labelContainer{
+                                                            span{
+                                                                color: map.get(map.get($theme, "light"), "error");
+                                                            }
+                                                        }
+                                                        .inputContainer{
+                                                            border-color: map.get(map.get($theme, "light"), "error");
+                                                        }
+                                                    }
+                                                    
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .actionsFormContainer{
+                                .buttonsContainer{
+                                    .buttonContainer{
+                                        button:disabled{
+                                            background-color: map.get(map.get($theme, "light"), "text-light");
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    }
+                }
+            }
+            &.singInPage{
+                .content{
+                    .formsContainer{
+                        .formContainer{
+                            .inputsContainer{
+                                .inputContainer{
+                                    .inputBox{
+                                        &:has(input:focus){
+                                            border: 1px solid map.get(map.get($theme, "light"), "primary");
+                                            label{
+                                                color: map.get(map.get($theme, "light"), "primary");
+                                            }
+                                        }
+                                        &:has(span.errorMsg){
+                                            border: 1px solid map.get(map.get($theme, "light"), "error");
+                                            label{
+                                                color: map.get(map.get($theme, "light"), "error");
+                                            }
+                                        }
+                                        border: 1px solid #b7b1b1;
+                                        label{
+                                            color: map.get(map.get($theme, "light"), "text-light");
+                                        }
+                                    }
+                                }
+                            }
+                            .formActionContainer{
+                                .buttonContainer{
+                                    button{
+                                        &:disabled{
+                                            background-color: map.get(map.get($theme, "light"), "text-light");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .navigationContent{
+                        .messageContainer{
+                            p{
+                                &.secondMsg{
+                                    color: #9499a9
+                                }
+                            }
+                        }
+                    }
+                }
+                .formBox{
+                    .formsContainer{
+                        .formContainer{
+                            .inputsContainer{
+                                .inputContainer{
+                                    .inputBox{
+                                        &:has(input:focus){
+                                            border: 1px solid map.get(map.get($theme, "light"), "primary");
+                                            label{
+                                                color: map.get(map.get($theme, "light"), "primary");
+                                            }
+                                        }
+                                        &:has(span.errorMsg){
+                                            border: 1px solid map.get(map.get($theme, "light"), "error");
+                                            label{
+                                                color: map.get(map.get($theme, "light"), "error");
+                                            }
+                                        }
+                                        border: 1px solid #b7b1b1;
+                                        label{
+                                            color: map.get(map.get($theme, "light"), "text-light");
+                                        }
+                                    }
+                                }
+                            }
+                            .formButtonsContainer{
+                                .buttonContainer{
+                                    button{
+                                        &:disabled{
+                                            background-color: map.get(map.get($theme, "light"), "text-light");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .navigationContent{
+                        .messageContainer{
+                            p{
+                                &.secondMsg{
+                                    color: #9499a9
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.cartPage{
+                .itemsListContainer{
+                    .labelContainer{
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.176);
+                    }
+                    .itemsTable{
+                        .gridRow{
+                            border-bottom: 1px solid rgba(0, 0, 0, 0.176);
+                        }
+                    }
+                }
+                .cartBottomContainer{
+                    form{
+                        .formContainer{
+                            .mainContainer{
+                                .addressContainer{
+                                    .addressItems{
+                                        .addressOptions{
+                                            .addressOption{
+                                                border: 1px solid #b7b1b1;
+                                                &:has(input:checked){
+                                                    border-color: map.get(map.get($theme, "light"), "primary-light");
+                                                }
+                                                label{
+                                                    input:checked + .indicatorContainer{
+                                                        border-color: map.get(map.get($theme, "light"), "primary");
+                                                        background-color: map.get(map.get($theme, "light"), "primary");
+                                                        outline: 3px solid #fff;
+                                                        outline-offset: -5px;
+                                                    }
+                                                    .indicatorContainer{
+                                                        border: 2px solid map.get(map.get($theme, "light"), "text-light")
+                                                    }
+                                                }
+                                                .newAddressContianer{
+                                                    .inputsGridSystem{
+                                                        .inputGridField{
+                                                            label{
+                                                                &:has(.inputContainer input:focus){
+                                                                    .labelContainer{
+                                                                        span.label{
+                                                                            color: map.get(map.get($theme, "light"), "primary");
+                                                                        }
+                                                                    }
+                                                                    .inputContainer{
+                                                                        border: 1px solid map.get(map.get($theme, "light"), "primary");
+                                                                    }
+                                                                }
+                                                                &:has(.inputContainer span.errorMsg){
+                                                                    .labelContainer{
+                                                                        span.label{
+                                                                            color: map.get(map.get($theme, "light"), "error");
+                                                                        }
+                                                                    }
+                                                                    .inputContainer{
+                                                                        border: 1px solid map.get(map.get($theme, "light"), "error");
+                                                                    }
+                                                                }
+                                                                .inputContainer{
+                                                                    border: 1px solid #b7b1b1;
+                                                                }
+                                                            }
+                                                        }
+                                                        .inputContainer{
+                                                            label{
+                                                                span.label:has(+input:focus){
+                                                                    color: map.get(map.get($theme, "light"), "primary");
+                                                                    input{
+                                                                        border: 1px solid map.get(map.get($theme, "light"), "primary");
+
+                                                                    }
+                                                                }
+                                                                input{
+                                                                    border: 1px solid #b7b1b1;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .sideContainer{
+                                .actionContainer{
+                                    .buttonContainer{
+                                        button:disabled{
+                                            background-color: map.get(map.get($theme, "light"), "primary-light");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.whishListPage{
+                .whishListBottomContainer{
+                    .noItemsContainer{
+                        .icon{
+                            border: 3px solid map.get(map.get($theme, 'light'), 'text-light');
+                        }
+                    }
+                    .gridSystem{
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.176);
+                    }
+                    .itemTable{
+                        .checkContainer{
+                            input[type='checkbox']:checked+span{
+                                background-color: map.get(map.get($theme, "light"), "primary-light");
+                                color: map.get(map.get($theme, "light"), "secondery-light");
+                            }
+                            span{
+                                border: 1px solid #00000056;
+                            }
+                        }
+                    } 
+                    .buttonsSection{
+                        .selectedDialog{
+                            .currentValue{
+                                border-bottom: 2px solid rgba(0, 0, 0, 0.31);
+                                &:hover{
+                                    border-color: map.get(map.get($theme, "light"), "primary-light");
+                                }
+                            }
+                            button{
+                                border: 2px solid map.get(map.get($theme, "light"), "primary-light");
+                            }
+                        }
+                    }
+                }
+            }
+            &.productPage{
+                .itemContainer{
+                    .imgsBox{
+                        .carouselContainer{
+                            .indicatorContainer{
+                                button{
+                                    &.active{
+                                        border: 1px solid map.get(map.get($theme, "light"), "primary");
+                                    }
+                                }
+                            }
+                            &.standardScreen{
+                                .indicatorsContainer{
+                                    .indicatorsBox{
+                                        .indicatorContainer{
+                                            button{
+                                                border: 1px solid #9fa8d1;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .infoBox{
+                        .productInfo{
+                            .btnsContainer{
+                                .btnContainer{
+                                    border: 1px solid map.get(map.get($theme, "light"), "primary-light");
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .contentContainer{
+            .buttonContainer{
+                button.active::after{
+                    box-shadow: -5px -5px 0px 5px map.get(map.get($theme, "light"), "primary");
+                }
+            }
+            .listContainer{
+                box-shadow: 0 2px 15px rgba(27, 28, 30, 0.3607843137);
+                ul{
+                    &::-webkit-scrollbar-track {
+                        background-color: transparent;
+                    }
+                    &::-webkit-scrollbar-thumb {
+                        background-color: map.get(map.get($theme, "light"), "primary");
+                    }
+                    li{
+                        .itemUserContainer{
+                            border-bottom: 1px solid rgba(0, 0, 0, 0.176);                    
+                        }
+                    }
+                }
+            }
+        }
+        .popupContainer{
+            .inputContainer{
+                border: 1px solid #b7b1b1;
+                &:has(input:focus){
+                    border: 1px solid map.get(map.get($theme, "light"), "primary");
+                }
+            }
+            button.submitBtn:disabled{
+                background-color: map.get(map.get($theme, "light"), "text-light")
+            }
+        }
+        .filterBar{
+            .filterContainer{
+                border-bottom: 1px solid #bbbbbb;
+                .valuesContianer{
+                    scrollbar-color: map.get(map.get($theme, "light"), "primary") transparent;
+                    &::-webkit-scrollbar {
+                        width: 5px;
+                    }
+                    &::-webkit-scrollbar-track {
+                        background-color: transparent;
+                    }
+                    &::-webkit-scrollbar-thumb {
+                        background-color: map.get(map.get($theme, "light"), "primary");
+                    }
+                }
+            }
+            .valueFilter :has(input:checked){
+                background-color: map.get(map.get($theme, "light"), "primary");
+                color: map.get(map.get($theme, "light"), "secondery");
+            }
+            .range{
+                input::-webkit-slider-thumb{
+                    background-color: map.get(map.get($theme, "light"), "primary-light");
+                    &:focus{
+                        background-color: #bebebe;
+                    }
+                }
+                input::-moz-range-thumb{
+                    background-color: map.get(map.get($theme, "light"), "primary-light");
+                }
+            }
+        }
+        .loaderContainer{
+            span.loader{
+                border: 6px solid;
+                border-color: map.get(map.get($theme, "light"), "primary") map.get(map.get($theme, "light"), "primary") map.get(map.get($theme, "light"), "primary") transparent ;
+            }
+        }
+        .itemsInfoLine{
+            .btnContainer{
+                background-color: #d3d3d3;
+            }
+        }
+        .alertsContainer{
+            .alertContainer{
+                .progress::before{
+                    background-color: map.get(map.get($theme, "light"), "primary-light");
+                }
+            }
+            .alertBox{
+                .formContainer{
+                    form{
+                        .inputsContainer{
+                            .inputContainer{
+                                border-color: #b7b1b1;
+                                &:has(label input:focus){
+                                    border-color: map.get(map.get($theme, "light"), "primary");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    footer{
+        .contacts{
+            button{
+                a{
+                    color: map.get(map.get($theme, "light"), "secondAccent");
+                }
+                &:hover{
+                    a{
+                        color: map.get(map.get($theme, "light"), "secondery");
+                    }
+                }
+            }
+        }
+    }
+}

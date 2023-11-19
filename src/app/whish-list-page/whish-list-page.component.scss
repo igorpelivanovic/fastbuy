@@ -1,0 +1,593 @@
+@use "sass:map";
+@import "./../../style/variables";
+:host{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.container{
+    padding-bottom: 20px;
+    height: 100%;
+    flex: 1;
+    gap: 0;
+    .whishListTopContainer{
+        .title{
+            padding-block: 30px;
+            display: flex;
+            justify-content: center;
+            h1{
+                font-size: 1.5em;
+                text-transform: capitalize;
+            }
+        }
+    }
+    .whishListBottomContainer{
+        flex: 1;
+        .noItemsContainer{
+            flex: 1;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 1.2em;
+            font-weight: 600;
+            .icon{
+                padding: 12px;
+                border-radius: 50%;
+                span{
+                    fa-icon{
+                        display: flex;
+                    }
+                }
+            }
+            .title{
+                &::first-letter{
+                    text-transform: capitalize;
+                }
+            }
+        }
+        form{
+            display: block;
+            height: 100%;
+            .formContainer{
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                gap: 20px;
+                
+                .tableSection{
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    .gridSystem{
+                        width: 100%;
+                        //font-size: .8em;
+                        font-size: .9em;
+                        padding-inline: 10px;
+                        display: grid;
+                        grid-template-columns: 30px 50px 1fr 1fr 50px;
+                        //grid-template-columns: 50px 1fr 160px 160px 150px 160px 60px;
+                        gap: 15px 10px;
+                    }
+                    .tableHeadContainer{
+                        display: none;
+                        //display: block;
+                        text-align: center;
+                        overflow-y: scroll;
+                        font-weight: 700;
+                        padding-block: 5px;
+                        //scrollbar-color: map.get(map.get($theme, "light"), "primary") transparent;
+                        &::-webkit-scrollbar {
+                            width: 5px;
+                        }
+                        &::-webkit-scrollbar-track {
+                            background-color: transparent;
+                        }
+                        
+                        &::-webkit-scrollbar-thumb {
+                            //background-color: map.get(map.get($theme, "light"), "primary");
+                        }
+                        p::first-letter{
+                            text-transform: capitalize;
+                        }
+                        .titleHeader{
+                            grid-column-start: 2;
+                            text-align: left;
+                        }
+                        .removeHeader{
+                            grid-column-start: 7 
+                        }
+                    }
+                    .tableBodyContainer{
+                        flex: 1 0 0px;
+                        display: flex;
+                        //overflow: hidden;
+                        .table{
+                            flex: 0 0 100%;
+                            overflow-y: scroll;
+                            //scrollbar-color: map.get(map.get($theme, "light"), "primary") transparent;
+                            &::-webkit-scrollbar {
+                                width: 5px;
+                            }
+                            &::-webkit-scrollbar-track {
+                                background-color: transparent;
+                            }
+                            
+                            &::-webkit-scrollbar-thumb {
+                                //background-color: map.get(map.get($theme, "light"), "primary");
+                            }
+                            .itemTable{
+                                padding-block: 8px;
+                                .gridElement{
+                                    display: flex;
+                                    gap: 5px;
+                                    p{
+                                        display: flex;
+                                        gap: 5px;
+                                    }
+                                }
+                                span.title{
+                                    font-weight: 700;
+                                    text-transform: capitalize;
+                                }
+                                >*{
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                }
+                                .checkContainer{
+                                    input[type='checkbox']{
+                                        display: none
+                                    };
+                                    input[type='checkbox']:checked+span{
+                                        fa-icon{
+                                            display: flex;
+                                        }
+                                    }
+                                    span{
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        width: 15px;
+                                        //width: 20px;
+                                        font-size: .8em;
+                                        aspect-ratio: 1/1;
+                                        cursor: pointer;
+                                        border-radius: 3px;
+                                        fa-icon{
+                                            display: none;
+                                        }
+                                    }
+                                }
+                                .titleContainer{
+                                    width: 100%;
+                                    grid-column-start: span 3;
+                                    a{
+                                        display: block;
+                                        flex: 1 0 fit-content;
+                                    }
+                                    .linkContainer{
+                                        align-items: center;
+                                        justify-content: flex-start;
+                                        display: flex;
+                                        gap: 8px;
+                                    }
+                                    .imgContainer{
+                                        display: flex;
+                                        align-items: center;
+                                        flex: 0 0 50px;
+                                        height: 50px;
+                                        img{
+                                            display: block;
+                                            width: 100%;
+                                            object-fit: contain;
+                                        }
+                                    }
+                                    .titleBox{
+                                        display: flex;
+                                        flex-direction: column;
+                                        justify-content: space-between;
+                                        .brand{
+                                            display: none;
+                                            .title{
+                                                font-weight: 700;
+                                            }
+                                        }
+                                    }
+                                }
+                                .brandContainer{
+                                    grid-column: 2/-1;
+                                    justify-content: flex-start;
+
+                                }
+                                .dateContianer{
+                                    justify-content: flex-start;
+                                    grid-column: 2/-1;
+                                    
+                                }
+                                .priceContainer{
+                                    justify-content: flex-start;
+                                    grid-column: 2/-1;
+                                    display: flex;
+                                    gap: 10px;
+                                    .prices{
+                                        display: flex;
+                                        gap: 5px;
+                                    }
+                                }
+                                .quanityContainer{
+                                    grid-area: 5/2/5/4;
+                                    .gridElement{
+                                        display: flex;
+                                        font-size: .9em;
+                                        .buttonContainer{
+                                            width: 25px;
+                                            display: flex;
+                                            justify-content: center;
+                                            button{
+                                                cursor: pointer;
+                                            }
+                                            fa-icon{
+                                                display: flex;
+                                            }
+                                        }
+                                        .valueContainer{
+                                            span{
+                                                font-size: 1.1em;
+                                                text-align: center;
+                                                display: inline-block;
+                                                width: 40px;
+                                            }
+                                        }
+                                    }
+                                }
+                                .addCartBtnContainer{
+                                    grid-column-start: span 2;
+                                    button{
+                                        cursor: pointer;
+                                        font-weight: 500;
+                                        text-transform: uppercase;
+                                        padding: 8px 16px;
+                                        font-size: .9em;
+                                        border-radius: 20px;
+                                        span{
+                                            font-weight: 500;
+                                        }
+                                    }
+                                }
+                                .removeBtnContainer{
+                                    grid-area: 1/5;
+                                    button{
+                                        width: 30px;
+                                        aspect-ratio: 1/1;
+                                        font-size: 1.4em;
+                                        cursor: pointer;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .buttonsSection{
+                    display: flex;
+                    flex-direction: column;
+                    //gap: 10px;
+                    gap: 40px;
+                    .btnsContainer{
+                        display: flex;
+                        justify-content: flex-end;
+                        gap: 10px;
+                        font-weight: 500;
+                        button{
+                            padding: 5px 20px;
+                            border-radius: 15px;
+                            font-size: .9em;
+                            &.add{
+                                padding: 5px 25px;
+                            }
+                        }
+                        &.selectedDialog{
+                            align-items: center;
+                            justify-content: flex-start;
+                            flex-direction: row;
+                            font-size: .9em;
+                            flex-wrap: wrap;
+                            .title{
+                                p::first-letter{
+                                    text-transform: capitalize;
+                                }
+                            }
+                            .buttons{
+                                flex: 0 1 100%;
+                                align-items: center;
+                                display: flex;
+                                gap: 15px;
+                                .buttonContainer{
+                                    flex: 0 0 140px;
+                                    &.applyVal{
+                                        flex: fit-content;
+                                    }
+                                   .selectContainer{
+                                        position: relative;
+                                        font-weight: 400;
+                                        .currentValue{
+                                            padding-inline: 2px;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: space-between;
+                                            cursor: pointer;
+                                            span.icon{
+                                                transition: .2s transform;
+                                                font-size: .9em;
+                                            }
+                                        }
+                                        &:has( .optionsContainer.active){
+                                            .currentValue{
+                                                span.icon{
+                                                    transform: rotate(180deg);
+                                                }
+                                            }
+                                        }
+                                        .optionsContainer{
+                                            display: none;
+                                            box-shadow: 0 2px 15px rgba(27, 28, 30, 0.3607843137);
+                                            position: absolute;
+                                            width: 100%;
+                                            top: 100%;
+                                            left: 0;
+                                            padding: 5px 0 10px;
+                                            border-radius: 0 0 8px 8px;
+                                            &.active{
+                                                display: block;
+                                            }
+                                            ul{
+                                                list-style: none;
+                                                display: flex;
+                                                flex-direction: column;
+                                                padding-inline: 2px;
+                                                li{
+                                                    padding-inline:5px ;
+                                                    width: 100%;
+                                                    cursor: pointer;
+                                                    label{
+                                                        cursor: pointer;
+                                                        display: block;
+                                                        width: 100%;
+                                                        input{
+                                                            display: none;
+                                                        }
+                                                        span.title{
+                                                            font-size: 1em;
+                                                        }
+                                                        
+                                                    }
+                                                }
+                                            }
+                                        }
+                                   } 
+                                }
+                            }
+                            button{
+                                cursor: pointer;
+                                font-size: .9em;
+                                font-weight: 500;
+                                padding: 4px 25px;
+                                border-radius: 25px;
+                            }
+                        }
+                        &.mainBtns{
+                            flex-direction: column-reverse;
+                            .btnContainer{
+                                flex: 1;
+                                button{
+                                    cursor: pointer;
+                                    padding-block: 8px;
+                                    width: 100%;
+                                    font-size: 1em;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+@media ( min-width: map.get($brakePoints, "small")){
+    .container{
+        .whishListBottomContainer{
+            form{
+                .formContainer{
+                    .buttonsSection{
+                        .btnsContainer{
+                            &.selectedDialog{
+                                flex-wrap: nowrap;
+                                .buttons{
+                                    flex: 0;
+                                }
+                            }
+                            &.mainBtns{
+                                flex-direction: row;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media ( min-width: map.get($brakePoints, "medium")){
+    .container{
+        .whishListBottomContainer{
+            form{
+                .formContainer{
+                    .tableSection{
+                        .gridSystem{
+                            grid-template-columns: 30px 1fr 1fr 1fr auto;
+                        }
+                        .tableBodyContainer{
+                            .table{
+                                .itemTable{
+                                    .brandContainer{
+                                        grid-column: 2;
+                                    }
+                                    .dateContianer{
+                                        grid-column: 3;
+                                    }
+                                    .priceContainer{
+                                        grid-column: 4;
+                                    }
+                                    .quanityContainer{
+                                        grid-area: auto;
+                                        grid-column: 3;
+                                    }
+                                    .addCartBtnContainer{
+                                        grid-column: 4;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .buttonsSection{
+                        .btnsContainer.mainBtns{
+                            .btnContainer{
+                                flex: 0 0 180px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media ( min-width: map.get($brakePoints, "extraLarge")){
+    .container{
+        .whishListBottomContainer{
+            form{
+                .formContainer{
+                    .tableSection{
+                        .gridSystem{
+                            font-size: .8em;
+                            grid-template-columns: 50px 1fr 160px 160px 150px 160px 60px;
+                        }
+                        .tableHeadContainer{
+                            display: grid;
+                            //scrollbar-color: map.get(map.get($theme, "light"), "primary") transparent;
+                        }
+                        .tableBodyContainer{
+                            overflow: hidden;
+                            .table{
+                                .itemTable.gridSystem{
+                                    .checkContainer{
+                                        span{
+                                            width: 20px;
+                                            font-size: 1em;
+                                        }
+                                    }
+                                    .titleContainer{
+                                        grid-column-start: auto;
+                                        .titleBox{
+                                            .title{
+                                                &::first-letter{
+                                                    text-transform: capitalize;
+                                                }
+                                            }
+                                            align-self: stretch;
+                                            .brand{
+                                                display: block;
+                                            }
+                                        }
+                                    }
+                                    .brandContainer, .title.mobile{
+                                        display: none;
+                                    }
+                                    .dateContianer{
+                                        justify-content: center;
+                                        grid-column: auto;
+                                    }
+                                    .priceContainer{
+                                        justify-content: center;
+                                        grid-column: auto;
+                                        display: flex;
+                                        gap: 10px;
+                                        .prices{
+                                            display: flex;
+                                            gap: 5px;
+                                            .oldPrice{
+                                                p{
+                                                    text-decoration: line-through;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .quanityContainer{
+                                        grid-area: auto;
+                                        .gridElement{
+                                            display: flex;
+                                            font-size: .9em;
+                                            .buttonContainer{
+                                                width: 25px;
+                                                display: flex;
+                                                justify-content: center;
+                                                fa-icon{
+                                                    display: flex;
+                                                }
+                                            }
+                                            .valueContainer{
+                                                span{
+                                                    font-size: 1.1em;
+                                                    text-align: center;
+                                                    display: inline-block;
+                                                    width: 40px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .addCartBtnContainer{
+                                        grid-column-start: auto;
+                                        button{
+                                            cursor: pointer;
+                                            font-weight: 500;
+                                            text-transform: uppercase;
+                                            padding: 8px 16px;
+                                            font-size: .9em;
+                                            border-radius: 20px;
+                                            span{
+                                                font-weight: 500;
+                                            }
+                                        }
+                                    }
+                                    .removeBtnContainer{
+                                        grid-area: auto;
+                                        button{
+                                            width: 30px;
+                                            aspect-ratio: 1/1;
+                                            font-size: 1.4em;
+                                            cursor: pointer;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .buttonsSection{
+                        gap: 10px;
+                        .btnsContainer.mainBtns{
+                            .btnContainer{
+                                flex: 0 0 160px;
+                                button{
+                                    font-size: .85em;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+}

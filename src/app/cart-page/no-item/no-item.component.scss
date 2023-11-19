@@ -1,0 +1,30 @@
+:host{
+    height: 100%;
+    width: 100%;
+}
+.noItemsContainer{
+    height: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 1.2em;
+    font-weight: 600;
+    .icon{
+        padding: 12px;
+        border-radius: 50%;
+        border: 3px solid;
+        span{
+            fa-icon{
+                display: flex;
+            }
+        }
+    }
+    .title{
+        &::first-letter{
+            text-transform: capitalize;
+        }
+    }
+}

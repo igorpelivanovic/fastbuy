@@ -1,0 +1,14 @@
+@import "./../../style/animations";
+
+
+    .container{
+        .titleContianer{
+            h1{
+                font-size: 1.6em;
+                &::first-letter{
+                    text-transform: capitalize;
+                }
+            }
+        }
+        
+    }

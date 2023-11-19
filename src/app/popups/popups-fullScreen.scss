@@ -1,0 +1,130 @@
+:host{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0404049c;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.popupContainer{
+    padding: 30px 60px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+    .iconContainer{
+        display: flex;
+        justify-content: center;
+        span.icon{
+            font-size: 2em;
+        }
+    }
+    .msgContainer{
+        font-size: 1em;
+        text-align: center;
+        font-weight: 500;
+        p.msg{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            span.sideMsg{
+                font-size: .85em;
+            }
+        }
+    }
+    .formContainer{
+        margin-top: 15px;
+        form{
+            .formsElements{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                .inputsContainer{
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    padding-bottom: 35px;
+                    label{
+                        .inputContainer{
+                            position: relative;
+                            padding: 5px 10px;
+                            border-radius: 6px;
+                            width: 240px;
+                            .buttonsContainer{
+                                position: absolute;
+                                top: 0;
+                                right: 10px;
+                                height: 100%;
+                                display: flex;
+                                align-items: center;
+                                gap: 8px;
+                                .buttonContainer{
+                                    button{
+                                        cursor: pointer;
+                                        span.icon{
+                                            fa-icon{
+                                                display: flex;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            input{
+                                display: block;
+                                width: 100%;
+                                font-weight: 500;
+                                &::placeholder{
+                                    font-size: .95em;
+                                    font-weight: 500;
+                                    text-transform: capitalize;
+                                }
+                            }
+                        }
+                    }
+                    .errorMsgContainer{
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        padding-left: 5px;
+                        span.msg{
+                            font-size: .8em;
+                            font-weight: 500;
+                        }
+                    }
+                }
+                .actionsContainer{
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: baseline;
+                    gap: 20px;
+                    .buttonContainer{
+                        button{
+                            font-size: .8em;
+                            cursor: pointer;
+                            &.back:hover{
+                                text-decoration: underline;
+                            }
+                            &.submitBtn{
+                                padding: 5px 15px;
+                                border-radius: 8px;
+                                &:disabled{
+                                    cursor: auto;
+                                }
+                                span.icon{
+                                    margin-left: 8px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,529 @@
+@use "sass:map";
+@import "./../../style/variables";
+* {
+    scroll-margin-top: 120px;
+  }
+:host{
+    width: 100%;
+    display: flex;
+}
+.container{
+    .content{
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+        .itemContainer{
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            .infoBox{
+                position: relative;
+                .infoContainer{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    .navigateLine{
+                        a{  
+                            font-size: .85em;
+                            .icon{
+                                fa-icon{
+                                    font-size: .8em;
+                                }
+                            }
+                            .categoryValue{
+                                font-weight: 500;
+                                text-transform: capitalize;
+                            }
+                        }
+                    }
+                    .productInfo{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 25px;
+                        .productContainer{
+                            display: flex;
+                            flex-direction: column;
+                            gap: 4px;
+                            .titleProductContainer{
+                                h1{
+                                    text-transform: capitalize;
+                                    font-size: 1.4em;
+                                }
+                            }
+                            .ratingProductContainer{
+                                display: flex;
+                                align-items: center;
+                                gap: 10px;
+                                .ratingContainer{
+                                    font-size: .8em;
+                                }
+                                .btnContainer{
+                                    display: flex;
+                                    gap: 5px;
+                                    font-size: .9em;
+                                    .title{
+                                        font-weight: 500;
+                                        text-transform: capitalize;
+                                        cursor: pointer;
+                                        &:hover{
+                                            text-decoration: underline;
+                                        }
+                                    }
+                                }
+                            }
+                            .priceContainer{
+                                p{
+                                    display: flex;
+                                    align-items: flex-end;
+                                    gap: 10px;
+                                    .currentPrice{
+                                        font-weight: 700;
+                                        font-size: 1.5em
+                                    }
+                                    .oldPrice{
+                                        font-size: 1.1em;
+                                        font-weight: 500;
+                                        text-decoration: line-through
+                                    }
+                                };
+                            }
+                            .brandContainer{
+                                display: flex;
+                                gap: 5px;
+                                font-size: .9em;
+                                .label{
+                                    font-weight: 700;
+                                    text-transform: capitalize;
+                                }
+                                .value{
+                                    &::first-letter{
+                                        text-transform: capitalize;
+                                    }
+                                }
+                            }
+                            .descriptionContainer{
+                                font-size: .75em;
+                            }
+                        }
+                        .btnsContainer{
+                            margin-top: 40px;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            gap: 10px;
+                            .btnContainer{
+                                width: 100%;
+                                border-radius: 10px;
+                                overflow: hidden;
+                                button{
+                                    cursor: pointer;
+                                }
+                                &.whislist{
+                                    button{
+                                        padding: 10px;
+                                        width: 100%;
+                                        display: flex;
+                                        justify-content: center;
+                                        gap: 5px;
+                                        text-transform: uppercase;
+                                        font-weight: 500;
+    
+                                    }
+                                }
+                                form{
+                                    display: flex;
+                                    align-items: center;
+                                    .quanityValueContainer{
+                                        display: flex;
+                                        padding-inline: 10px;
+                                        gap: 10px;
+                                        button{
+                                            .icon{
+                                                font-size: 0.9em;
+                                            }
+                                        }
+                                        input{
+                                            width: 40px;
+                                            font-size: 1.1em;
+                                            text-align: center;
+                                            appearance: textfield;
+                                            &::-webkit-outer-spin-button,
+                                            &::-webkit-inner-spin-button {
+                                            -webkit-appearance: none;
+                                            margin: 0;
+                                            }
+    
+                                        }
+                                    }
+                                    .addToCartContainer{
+                                        align-self: stretch;
+                                        flex: 1;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        button{
+                                            width: 100%;
+                                            padding: 10px;
+                                        }
+                                        span.title{
+                                            text-transform: uppercase;
+                                            font-weight: 500;
+                                            font-size: 1.1em;
+                                        }
+                                    }
+                                }
+                            }   
+                        }
+                    }
+                }
+            }
+        }
+        .commentContainer{
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            .topBox{
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                .title{
+                    text-align: center;
+                    text-transform: capitalize;
+                    h2{
+                        font-size: 1.3em;
+                    }
+                }
+                .ratingPreview{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+                    .value{
+                        font-weight: 700;
+                        font-size: 1.2em;
+                    }
+                    .stars{
+                        font-size: 1.1em;
+                    }
+                }
+            }
+            .bottomBox{
+                display: flex;
+                justify-content: center;
+                .notFound{
+                    p{
+                        margin-top: 20px;
+                        align-items: center;
+                        display: flex;
+                        flex-direction: column;
+                        font-size: 1em;
+                        font-weight: 500;
+                        span.title{
+                            &::first-letter{
+                                text-transform: capitalize;
+                            }
+                        }
+                        span.icon{
+                            font-size: 1.3em;
+                        }
+                    }
+                }
+                .commentsContainer{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                }
+                .titleList{
+                    display: flex;
+                    p, button{
+                        font-size: .9em;
+                    }
+                    p{
+                        &:has(+button){
+                            padding-right: 5px;
+                            border-right: 1px solid;
+                        }
+                    }
+                    button{
+                        cursor: pointer;
+                        margin-left: 5px;
+                        font-weight: 500;
+                        span.icon{
+                            font-size: .8em;
+                        }
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                    }
+                    p{
+                        &::first-letter{
+                            text-transform: capitalize;
+                        }
+                        .countOfComments{
+                            font-weight: 600;
+                        }
+                    }
+                }
+                .listsBox{
+                    .listContainer{
+                        display: flex;
+                        flex-direction: column;
+                        .commentBox{
+                            border-top: 1px solid rgba(0,0,0,0.17);
+                            padding: 20px 5px;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 10px;
+                            .userInfoContainer{
+                                display: flex;
+                                align-items: center;
+                                gap: 5px;
+                                font-size: .9em;
+                                span.userName{
+                                    font-weight: 500;
+                                    &::first-letter{
+                                        text-transform: capitalize;
+                                    }
+                                }
+                            }
+                            .commentContainer{
+                                font-size: .9em;
+                            }
+                        }
+                        button{
+                            cursor: pointer;
+                            align-self: center;
+                            width: fit-content;
+                            padding: 5px;
+                            font-size: .9em;
+                            span.title::first-letter{
+                                text-transform: capitalize;
+                            }
+                            &:hover{
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.loadingContainer{
+    display: flex;
+    padding-block: 50px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+@media (min-width: map.get($brakePoints, "small")){
+    * {
+        scroll-margin-top: 150px;
+      }
+    .container{
+        .content{
+            .itemContainer{
+                .infoBox{
+                    .infoContainer{
+                        .productInfo{
+                           .btnsContainer{
+                            flex-direction: row;
+                           } 
+                        }
+                    }
+                }
+            }
+            .commentContainer{
+                gap: 50px;
+                .topBox{
+                    gap: 40px;
+                    .ratingPreview{
+                        justify-content: center;
+                        flex-direction: row;
+                        gap: 20px;
+                        font-size: 1.1em;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width: map.get($brakePoints, "medium")){
+    .container{
+        .content{
+            .itemContainer{
+                flex-direction: row;
+                gap: 30px;
+                .infoBox{
+                    flex: 0 0 50%;
+                    .infoContainer{
+                        position: sticky;
+                        top: 150px;
+                        .productInfo{
+                            .btnsContainer{
+                                flex-direction: row;
+                                .btnContainer{
+                                    width: 180px;
+                                    &.cart{
+                                        width: 200px;
+                                    }
+                                    form{
+                                        .quanityValueContainer{
+                                            input{
+                                                width: 30px;
+                                                font-size: .9em;
+                                            }
+                                        }
+                                    }
+                                    button{
+                                        font-size: .6em;
+                                    }
+                                }
+                            } 
+                         }
+                    }
+                }
+            }
+            .commentContainer{
+                gap: 50px;
+                .topBox{
+                    .title{
+                        font-size: 1.3em;
+                    }
+                    .ratingPreview{
+                        justify-content: center;
+                        flex-direction: row;
+                        gap: 25px;
+                        font-size: 1.1em;
+                    }
+                }
+                .bottomBox{
+                    .notFound{
+                        p{
+                            font-size: 1.1em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width: map.get($brakePoints, "large")){
+    * {
+        scroll-margin-top: 160px;
+      }
+    .container{
+        .content{
+            gap: 100px;
+            .itemContainer{
+                gap: 40px;
+                .infoBox{
+                    .infoContainer{
+                        top: 160px;
+                        .productInfo{
+                            .btnsContainer{
+                                flex-direction: row;
+                                .btnContainer{
+                                    flex: 0 0 180px;
+                                    &.cart{
+                                        flex: 0 0 200px;
+                                    }
+                                    form{
+                                        .quanityValueContainer{
+                                            input{
+                                                width: 30px;
+                                                font-size: .9em;
+                                            }
+                                        }
+                                    }
+                                    button{
+                                        font-size: .6em;
+                                    }
+                                }
+                            } 
+                         }
+                    }
+                }
+            }
+            .commentContainer{
+                gap: 60px;
+                .topBox{
+                    gap: 50px;
+                    .ratingPreview{
+                        .value{
+                            font-size: 1.3em;
+                        }
+                        .stars{
+                            font-size: 1.2em;
+                        }
+                    }
+                }
+                .bottomBox{
+                        .notFound{
+                            p{
+                                margin-block: 40px;
+                                font-size: 1.2em;
+                            }
+                        }
+                    .commentsContainer{
+                        flex: 0 0 80%;
+                    }
+                    .listsBox{
+                        .listContainer{
+                            .commentBox{
+                                padding: 20px;
+                                flex-direction: row;
+                                align-items: flex-start;
+                                gap: 30px;
+                                .userInfoContainer{
+                                    flex: 0 0 150px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width: map.get($brakePoints, "extraLarge")){
+    * {
+        scroll-margin-top: 180px;
+      }
+    .container{
+        .content{
+            .itemContainer{
+                .infoBox{
+                    .infoContainer{
+                        top: 180px;
+                        .productInfo{
+                            .btnsContainer{
+                                flex-direction: row;
+                                .btnContainer{
+                                    flex: 0 0 200px;
+                                    &.cart{
+                                        flex: 0 0 220px;
+                                    }
+                                    form{
+                                        .quanityValueContainer{
+                                            input{
+                                                width: 30px;
+                                                font-size: 1em;
+                                            }
+                                        }
+                                    }
+                                    button{
+                                        font-size: .8em;
+                                    }
+                                }
+                            } 
+                         }
+                    }
+                }
+            }
+        }
+    }
+}

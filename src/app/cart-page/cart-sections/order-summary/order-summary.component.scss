@@ -1,0 +1,156 @@
+@use "sass:map";
+@import "./../../../../style/variables";
+
+
+
+.orderSummaryContainer{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    >.labelContainer{
+        p{
+
+            font-weight: 700;
+            font-size: 1.15em;
+            &::first-letter{
+                text-transform: capitalize;
+            }
+        }
+    }
+    .orderDataContainer{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        .summaryContainer{
+            display: flex;
+            flex-direction: row;
+            .generalOptions{
+                flex: 0 0 100%;
+                display: flex;
+                flex-direction: column;
+                .itemDataContainer{
+                    padding: 7px 5px;
+                    display: flex;
+                    justify-content: space-between;
+                    .optionsContainer{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+                    }
+                    .label{
+                        font-weight: 700;
+                    }
+                    &.totalPrice{
+                        font-size: 1.2em;
+                        font-weight: 700;
+                    }
+                    .label p::after{
+                        content: ":";
+                    }
+                    .optionContainer label{
+                        cursor: pointer;
+                        font-weight: 400;
+                        padding-inline: 10px;
+                        display: flex;
+                        gap: 10px;
+                        font-size: .9em;
+                        input{
+                            display: none;
+                            &:checked+.checkIndicatorContainer span.indicator.indicator{
+                                opacity: 1;
+                            }
+                        }
+                        .labelContainer{
+                            p{
+                                span.price{
+                                    &::before{
+                                        content: " - ";
+                                    }
+                                }
+                                &::first-letter{
+                                    text-transform: capitalize;
+                                }
+                            }
+                        }
+                        .checkIndicatorContainer{
+                            display: flex;
+                            align-items: center;
+                            span.indicator{
+                                width: 15px;
+                                aspect-ratio: 1/1;
+                                border-radius: 4px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                opacity: 0;
+                                fa-icon{
+                                    display: flex;
+                                    font-size: .7em;
+                                }
+                            }
+                        }
+                    }
+                    .label{
+                        p::first-letter{
+                            text-transform: capitalize;
+                        }
+                    }
+                    &.column{
+                        flex-direction: column;
+                        gap: 5px;
+                    }
+                }
+            }
+            
+        }
+
+    }
+}
+
+@media (min-width: map.get($brakePoints, "small")){
+    .orderSummaryContainer{
+        .orderDataContainer{
+            .actionContainer{
+                .buttonContainer{
+                    button{
+                        width: 250px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width: map.get($brakePoints, "medium")){
+    .orderSummaryContainer{
+        .orderDataContainer{
+            .actionContainer{
+                flex-direction: row-reverse;
+                justify-content: space-between;
+                align-items: flex-end;
+                .buttonContainer{
+                    button{
+                        width: 250px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width: map.get($brakePoints, "large")){
+    .orderSummaryContainer{
+        .orderDataContainer{
+            flex: 1;
+            justify-content: space-between;
+            .actionContainer{
+                align-items: center;
+                flex-direction: column;
+                .buttonContainer{
+                    a{
+                        font-size: .9em;
+                    }
+                }
+            }
+        }
+    }
+}

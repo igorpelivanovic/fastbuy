@@ -1,0 +1,26 @@
+$theme:(
+    "light": (
+        "primary": #1e2a5c,
+        "secondery": #f0f2fa,
+        "backgorund": #ffffff,
+        "secondBackgorund": #F3F3F4,
+        "text": #0c1227, 
+        "accent": #182249,
+        "secondAccent": #151b33,
+        "secondText": #464646,
+        "secondText-light": #bebebe,
+        "text-light": #858383,
+        "primary-light": #475281,
+        "secondery-light": #F2F2F2,
+        "dark": #000,
+        "error": #d72929
+    )
+);
+
+$brakePoints: (
+    "small": 576px,
+    "medium": 768px ,
+    "large": 992px ,
+    "extraLarge": 1200px ,
+    "extraExtraLarge": 1400px ,
+);

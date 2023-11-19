@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="titleContianer">
+        <h1>our products</h1>
+    </div>
+    <div class="productsContainer">
+        <div class="gridContainer">
+            <app-item-preview *ngFor="let item of products" [item]="item"></app-item-preview>
+        </div>
+    </div>
+    <app-loader *ngIf="isLoading"></app-loader>
+</div>

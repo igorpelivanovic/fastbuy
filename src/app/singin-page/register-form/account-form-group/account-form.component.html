@@ -1,0 +1,66 @@
+<div class="formTabContainer" [formGroup]="group">
+    <div class="inputsContainer">
+        <div class="inputContainer">
+            <div class="inputBox">
+                <label for="userName">
+                    <input placeholder="" type="text" class="text-color-light-secondText" name="userName" id="userName" formControlName="username" required>
+                    <span class="label">user name</span>
+                    <button class="clearInput text-color-light-secondText" type="button" *ngIf="!getControl('username')?.hasError('required')" (click)="clearControl('username')">
+                        <span class="icon">
+                            <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                        </span>
+                    </button>
+                </label>
+                <ng-container *ngIf="getControl('username')?.touched && getControl('username')?.invalid">
+                    <app-error-message [errors]="getControl('username').errors"></app-error-message>
+                </ng-container>
+            </div>
+        </div>
+        <div class="inputContainer">
+            <div class="inputBox">
+                <label for="passwordReg">
+                    <input [type]="regularPassHidden ? 'password' : 'text'" placeholder="" class="text-color-light-secondText" name="password" id="passwordReg" formControlName="password" autocomplete="off"  required>
+                    <span class="label">password</span>
+                    <div class="containerBtnOfInput" *ngIf="!getControl('password')?.hasError('required')">
+                        <button class="clearInput text-color-light-secondText" type="button" (click)="toggleRegularPassHidden()">
+                            <span class="icon">
+                                <fa-icon [icon]="regularPassHidden ? icon.faEyeSlash : icon.faEye"></fa-icon>
+                            </span>
+                        </button>
+                        <button class="clearInput text-color-light-secondText" type="button" (click)="clearControl('password')">
+                            <span class="icon">
+                                <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                            </span>
+                        </button>
+                    </div>
+                </label>
+                <ng-container *ngIf="getControl('password')?.touched && getControl('password')?.invalid">
+                    <app-error-message [errors]="getControl('password').errors"></app-error-message>
+                </ng-container>
+            </div>
+        </div>
+        <div class="inputContainer">
+            <div class="inputBox">
+                <label for="repeatPassword">
+                    <input [type]="repeatPassHidden ? 'password' : 'text'" placeholder="" class="text-color-light-secondText" name="repeatPassword" id="repeatPassword" formControlName="repeatPassword" autocomplete="off" required>
+                    <span class="label">repeat password</span>
+                    <div class="containerBtnOfInput" *ngIf="!getControl('repeatPassword')?.hasError('required') && getControl('repeatPassword')?.enabled">
+                        <button class="clearInput text-color-light-secondText" type="button" (click)="toggleRepeatPassHidden()">
+                            <span class="icon">
+                                <fa-icon [icon]="repeatPassHidden ? icon.faEyeSlash : icon.faEye"></fa-icon>
+                            </span>
+                        </button>
+                        <button class="clearInput text-color-light-secondText" type="button" (click)="clearControl('repeatPassword')">
+                            <span class="icon">
+                                <fa-icon [icon]="icon.faXmarkCircle"></fa-icon>
+                            </span>
+                        </button>
+                    </div>
+                </label>
+                <ng-container *ngIf="group.invalid && getControl('username')?.valid && getControl('repeatPassword')?.touched">
+                    <app-error-message [errors]="group.errors"></app-error-message>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

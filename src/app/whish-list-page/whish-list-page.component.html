@@ -1,0 +1,211 @@
+<div class="container bg-color-light-backgorund whishListPage">
+    <div class="whishListTopContainer">
+        <div class="title">
+            <h1 class="text-color-light-secondText">
+                <span class="icon">
+                    <fa-icon [icon]="icon.faHeart"></fa-icon>
+                </span>
+                my whishlist
+            </h1>
+        </div>
+    </div>
+    <div class="whishListBottomContainer">
+        <div class="noItemsContainer text-color-light-text-light" *ngIf="emptyWhishList else list">
+            <div class="icon">
+                <span>
+                    <fa-icon [icon]="icon.faHeart"></fa-icon>
+                </span>
+            </div>
+            <div class="title">
+                <span>whishlist is empty</span>
+            </div>
+        </div>
+        <ng-template #list>
+            <form [formGroup]="formWhishList" (ngSubmit)="submitForm()">
+                <div class="formContainer">
+                        <div class="tableSection">
+                            <div class="tableHeadContainer gridSystem">
+                                <div class="titleHeader">
+                                    <p>product</p>
+                                </div>
+                                <div class="dateHeader">
+                                    <p>added on</p>
+                                </div>
+                                <div class="priceHeader">
+                                    <p>unit price</p>
+                                </div>
+                                <div class="quanityHeader">
+                                    <p>quanity</p>
+                                </div>
+                                <div class="removeHeader">
+                                    <p>remove</p>
+                                </div>
+                            </div>
+                            <div class="tableBodyContainer">
+                                <div class="table" formArrayName="items">
+                                    <div class="itemTable gridSystem" *ngFor="let item of items.controls; let i = index">
+                                        <ng-container [formGroupName]="i">
+                                            <div class="checkContainer">
+                                                <label [for]="'itemCheck'+i">
+                                                    <input type="checkbox" [name]="'itemCheck'+i" [id]="'itemCheck'+i" formControlName="checked">
+                                                    <span class="icon">
+                                                        <fa-icon [icon]="icon.faCheck"></fa-icon>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <div class="titleContainer">
+                                                <a [routerLink]="'/product/'+whishlistItems[i].id" class="text-color-light-secondText">
+                                                    <div class="linkContainer">
+                                                        <div class="imgContainer">
+                                                            <img image [src]="whishlistItems[i].thumbnail" [alt]="whishlistItems[i].title">
+                                                        </div>
+                                                        <div class="titleBox">
+                                                            <p class="title">
+                                                                {{whishlistItems[i].title}}
+                                                            </p>
+                                                            <p class="brand">
+                                                                <span class="title text-color-light-dark">
+                                                                    Brand:
+                                                                </span>
+                                                                <span class="value">
+                                                                    {{whishlistItems[i].brand}}
+                                                                </span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="brandContainer">
+                                                <div class="gridElement">
+                                                    <p>
+                                                        <span class="title text-color-light-dark">brand:</span>
+                                                        <span class="value">{{whishlistItems[i].brand}}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="dateContianer">
+                                                <div class="gridElement">
+                                                    <p>
+                                                        <span class="title mobile text-color-light-dark">date:</span>
+                                                        <span class="value">{{whishlistItems[i].date | date: 'MMM d,y' }}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="priceContainer">
+                                                <div class="gridElement">
+                                                    <span class="title mobile text-color-light-dark">price:</span>
+                                                    <div class="prices">
+                                                        <span class="oldPrice text-color-light-text-light">
+                                                            <p>{{whishlistItems[i].price | currency}}</p>
+                                                        </span>
+                                                        <span class="newPrice">
+                                                            <p>{{whishlistItems[i].price | discountPercentage: whishlistItems[i].discountPercentage | currency}}</p>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="quanityContainer">
+                                                <div class="gridElement">
+                                                    <div class="buttonContainer">
+                                                        <button (click)="decrementQuanity(i)" class="text-color-light-secondText">
+                                                            <span class="icon">
+                                                                <fa-icon [icon]="icon.faMinus"></fa-icon>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="valueContainer">
+                                                        <span class="value">{{items.controls[i].value.quanity}}</span>
+                                                    </div>
+                                                    <div class="buttonContainer">
+                                                        <button (click)="incrementQuanity(i)" class="text-color-light-secondText">
+                                                            <span class="icon">
+                                                                <fa-icon [icon]="icon.faPlus"></fa-icon>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="addCartBtnContainer">
+                                                <div class="gridElement">
+                                                    <button type="button" (click)="addOneToCart(i)" class="bg-color-light-primary-light text-color-light-secondery-light">
+                                                        <span class="title">
+                                                            add to cart
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="removeBtnContainer">
+                                                <div class="gridElement">
+                                                    <button type="button" (click)="removeItemFormWhishList(i)" class="text-color-light-text-light">
+                                                        <span class="icon">
+                                                            <fa-icon [icon]="icon.faTrash"></fa-icon>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="buttonsSection text-color-light-secondText">
+                        <div class="btnsContainer selectedDialog">
+                            <div class="title">
+                                <p>apply this action for all items selected</p>
+                            </div>
+                            <div class="buttons">
+                                <div class="buttonContainer">
+                                    <div class="selectContainer">
+                                        <div class="currentValue text-color-light-primary-light" (click)="showAction = !showAction" clickOutside (clickedOutside)="toggleShowOptions($event)">
+                                            <span class="value">{{formActionOption.label}}</span>
+                                            <span class="icon">
+                                                <fa-icon [icon]="icon.faChevronDown"></fa-icon>
+                                            </span>
+                                        </div>
+                                        <div class="optionsContainer" [ngClass]="{active: showAction}" >
+                                            <ul>
+                                                <ng-container *ngFor="let action of actionsForm; let i = index">
+                                                    <li *ngIf="action.value != formActionOption.value" class="text-color-light-secondText hover-bg-color-light-primary-light hover-text-color-light-secondery">
+                                                        <label [for]="'action'+i">
+                                                            <span class="title">
+                                                                {{action.label}}
+                                                            </span>
+                                                            <input type="radio" name="action" [id]="'action'+i" [value]="action.value" formControlName="action">
+                                                        </label>
+                                                    </li>
+                                                </ng-container>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="buttonContainer applyVal">
+                                    <button class="text-color-light-primary-light">
+                                        <span class="title">
+                                            Apply
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btnsContainer mainBtns">
+                            <div class="btnContainer">
+                                <button type="button" (click)="removeAllFromWhishList()" class="text-color-light-secondText bg-color-light-secondBackgorund">
+                                    <span class="title">
+                                        Remove all
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="btnContainer">
+                                <button type="button" class="add" (click)="addAllToCart()" class="text-color-light-secondery bg-color-light-primary-light">
+                                    <span class="title">
+                                        Add all to cart
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </ng-template>
+    </div>
+</div>

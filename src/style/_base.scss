@@ -1,0 +1,117 @@
+@use "sass:map";
+@import "./variables";
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;    
+    box-sizing: border-box;
+}
+button{
+    display: block;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+input{
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+a{
+    text-decoration: none;
+}
+img{
+    display: block;
+}
+body{
+    &:has(.alertsContainer){
+        overflow: hidden;
+    }
+    header{
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+    .container{
+        width: 95%;
+        margin-inline: auto;
+    }
+    main{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex: 1;
+        .titleContainer{
+            h1{
+                font-size: 1.4em;
+                &::first-letter{
+                    text-transform: capitalize;
+                }
+            }
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            padding: 20px 10px 60px 10px;
+            gap: 30px;
+            &.flex-row{
+                flex-direction: row;
+            }
+        }
+        .productsContainer{
+            .gridContainer{
+                display: grid;
+                justify-content: center;
+                gap: 30px;
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    }
+}
+@media (min-width: map.get($brakePoints, "small")){
+    body{
+        .container{
+            .productsContainer{
+                .gridContainer{
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: map.get($brakePoints, "large")){
+    body{
+        .container{
+            width: 990px;
+            .productsContainer{
+                .gridContainer{
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: map.get($brakePoints, "extraLarge")){
+    body{
+        .container{
+            width: 1150px;
+            .productsContainer{
+                .gridContainer{
+                    grid-template-columns: repeat(4, 1fr);
+                }
+            }
+        }
+    }
+}
+@media (min-width: map.get($brakePoints, "extraExtraLarge")){
+    body{
+        .container{
+            width: 1200px;
+        }
+    }
+}

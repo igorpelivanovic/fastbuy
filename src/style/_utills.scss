@@ -1,0 +1,22 @@
+@use "sass:map";
+@import "./variables";
+
+@each $keyTheme, $valTheme in $theme{
+    @each $key, $val in $valTheme{
+        .bg-color-#{$keyTheme}-#{$key}{
+            background-color: $val;
+        }
+        .text-color-#{$keyTheme}-#{$key}{
+            color: $val;
+        }
+        .hover-bg-color-#{$keyTheme}-#{$key}:hover{
+            background-color: $val;
+        }
+        .hover-text-color-#{$keyTheme}-#{$key}:hover{
+            color: $val;
+        }
+        .border-color-#{$keyTheme}-#{$key}{
+            border-color: $val !important;
+        }
+    }
+}
