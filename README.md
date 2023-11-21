@@ -1,6 +1,6 @@
 # FAST BUY
 
-## 📔WHAT IS IT?
+## :notebook_with_decorative_cover:WHAT IS IT?
 
 Fast buy is simulation of frontend part webshop aplication, with logging available users. Aplication is made in Angular + SCSS.
 
