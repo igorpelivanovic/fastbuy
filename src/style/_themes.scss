@@ -1,18 +1,26 @@
 @use "sass:map";
 
-body{
-    background-color: map.get(map.get($theme, "light"), "secondery-light");
-    scrollbar-color: map.get(map.get($theme, "light"), "primary") transparent;
-    &::-webkit-scrollbar {
+@supports (not selector(::-webkit-scrollbar)) and (not selector(::-webkit-scrollbar-track)) and (not selector(::-webkit-scrollbar-thumb)){
+    *{
+        scrollbar-color: map.get(map.get($theme, "light"), "primary") transparent;
+        scrollbar-width: thin;
+    }
+}
+@supports selector(::-webkit-scrollbar) and selector(::-webkit-scrollbar-track) and selector(::-webkit-scrollbar-thumb){
+    ::-webkit-scrollbar {
         width: 5px;
     }
-    &::-webkit-scrollbar-track {
+    ::-webkit-scrollbar-track {
         background-color: transparent;
     }
     
-    &::-webkit-scrollbar-thumb {
+    ::-webkit-scrollbar-thumb {
         background-color: map.get(map.get($theme, "light"), "primary");
     }
+}
+
+body{
+    background-color: map.get(map.get($theme, "light"), "secondery-light");
     header{
         a:link, a:hover, a:visited, a:active{
             color: map.get(map.get($theme, "light"), "secondery");
@@ -30,27 +38,13 @@ body{
                 border-bottom: 4px solid #414b7321;
         }
         .content .categoriesContainer .categories{
-            scrollbar-color: map.get(map.get($theme, "light"), "primary") transparent;
             &::-webkit-scrollbar {
                 width: 5px;
-            }
-            &::-webkit-scrollbar-track {
-                background-color: transparent;
-            }
-            &::-webkit-scrollbar-thumb {
-                background-color: map.get(map.get($theme, "light"), "primary");
             }
         }
         .allCategoriesContainer{
-            scrollbar-color: map.get(map.get($theme, "light"), "primary") transparent;
             &::-webkit-scrollbar {
                 width: 5px;
-            }
-            &::-webkit-scrollbar-track {
-                background-color: transparent;
-            }
-            &::-webkit-scrollbar-thumb {
-                background-color: map.get(map.get($theme, "light"), "primary");
             }
             a{
                 color: map.get(map.get($theme, "light"), "secondText");
@@ -382,12 +376,6 @@ body{
             .listContainer{
                 box-shadow: 0 2px 15px rgba(27, 28, 30, 0.3607843137);
                 ul{
-                    &::-webkit-scrollbar-track {
-                        background-color: transparent;
-                    }
-                    &::-webkit-scrollbar-thumb {
-                        background-color: map.get(map.get($theme, "light"), "primary");
-                    }
                     li{
                         .itemUserContainer{
                             border-bottom: 1px solid rgba(0, 0, 0, 0.176);                    
@@ -411,15 +399,8 @@ body{
             .filterContainer{
                 border-bottom: 1px solid #bbbbbb;
                 .valuesContianer{
-                    scrollbar-color: map.get(map.get($theme, "light"), "primary") transparent;
                     &::-webkit-scrollbar {
                         width: 5px;
-                    }
-                    &::-webkit-scrollbar-track {
-                        background-color: transparent;
-                    }
-                    &::-webkit-scrollbar-thumb {
-                        background-color: map.get(map.get($theme, "light"), "primary");
                     }
                 }
             }
