@@ -455,16 +455,13 @@ body{
     }
     footer{
         .contacts{
-            button{
-                a{
-                    color: map.get(map.get($theme, "light"), "secondAccent");
-                }
+            a{
+                color: map.get(map.get($theme, "light"), "secondAccent");
                 &:hover{
-                    a{
-                        color: map.get(map.get($theme, "light"), "secondery");
-                    }
+                    color: map.get(map.get($theme, "light"), "secondery");
                 }
             }
+
         }
     }
 }
