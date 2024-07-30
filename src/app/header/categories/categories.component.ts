@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { faBars, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { AppInitService } from 'src/app/services/app-init.service';
 import { Router } from '@angular/router';
+import { CategoryOfProducts } from 'src/app/interfaces/category.interface';
 
 
 @Component({
@@ -47,7 +48,7 @@ export class CategoriesComponent implements OnInit {
   get icon(){
     return this.icons
   }
-  get categoriesList(): String[]{
+  get categoriesList(): CategoryOfProducts[]{
     return this.appInit.categoriesList
   }
   handelClickOutside(val: boolean){

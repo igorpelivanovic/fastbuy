@@ -2,6 +2,7 @@ import { animate, style,  transition, trigger } from '@angular/animations';
 import { DOCUMENT } from '@angular/common';
 import { Component, EventEmitter, Inject, OnDestroy, OnInit, Output} from '@angular/core';
 import { faPhone, faEnvelope, faUser, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { CategoryOfProducts } from 'src/app/interfaces/category.interface';
 import { AppInitService } from 'src/app/services/app-init.service';
 
 @Component({
@@ -61,8 +62,9 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     this.document.body.style.overflow = "hidden"
+
   }
-  get categoriesList(): String[]{
+  get categoriesList(): CategoryOfProducts[]{
     return this.appInit.categoriesList
   }
 

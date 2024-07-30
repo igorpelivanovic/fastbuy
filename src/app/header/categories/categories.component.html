@@ -18,8 +18,8 @@
                         <nav>
                             <ul>
                                 <li *ngFor="let category of categoriesList" (click)="showAllCategories = false">
-                                    <a [routerLink]="['category', category]" class="text-color-light-secondText hover-bg-color-light-primary-light hover-text-color-light-secondery">
-                                        {{category}}
+                                    <a [routerLink]="['category', category.slug]" class="text-color-light-secondText hover-bg-color-light-primary-light hover-text-color-light-secondery">
+                                        {{category.name}}
                                     </a>
                                 </li>
                             </ul>
@@ -27,8 +27,8 @@
                     </div>
                 </li>
                 <li *ngFor="let category of categoriesList.slice(0,4)">
-                    <a [routerLink]="['category', category]" class="hover-bg-color-light-primary-light">
-                        {{category}}
+                    <a [routerLink]="['category', category.slug]" class="hover-bg-color-light-primary-light">
+                        {{category.name}}
                     </a>
                 </li>
             </ul>

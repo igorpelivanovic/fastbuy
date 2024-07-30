@@ -34,8 +34,8 @@
                 <div class="valuesfilter" >
                     <div class="valueFilter range">
                         <div class="inputContainer">
-                            <input type="range" name="minPrice" id="minPrice" #inputRanges checkRangeMinVal [max]="filterOptions.price.max" [min]="filterOptions.price.min" formControlName="minPrice" [range]="filterOptions.price" [valueMax]="maxPrice.value" [filterSerivece]="filterBoxServ" >
-                            <input type="range" name="maxPrice" id="maxPrice" #inputRanges checkRangeMaxVal [max]="max" [min]="filterOptions.price.min" formControlName="maxPrice" [range]="filterOptions.price"  [valueMin]="minPrice.value" [filterSerivece]="filterBoxServ" >
+                            <input type="range" name="minPrice" id="minPrice" #inputRanges checkRangeMinVal step="0.01" [max]="filterOptions.price.max" [min]="filterOptions.price.min" formControlName="minPrice" [range]="filterOptions.price" [valueMax]="maxPrice.value" [filterSerivece]="filterBoxServ" >
+                            <input type="range" name="maxPrice" id="maxPrice" #inputRanges checkRangeMaxVal step="0.01" [max]="max" [min]="filterOptions.price.min" formControlName="maxPrice" [range]="filterOptions.price"  [valueMin]="minPrice.value" [filterSerivece]="filterBoxServ" >
                             <span class="line bg-color-light-secondText-light bg" [ngStyle]="{background: generateBgRange(filterOptions.price, form.get('minPrice')?.value, form.get('maxPrice')?.value)}"></span>
                         </div>
                         <div class="currentValue">

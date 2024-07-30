@@ -38,9 +38,9 @@
                 <nav>
                     <ul>
                         <li *ngFor="let category of categoriesList">
-                            <a [routerLink]="['category', category]">
+                            <a [routerLink]="['category', category.slug]">
                                 <span>
-                                    {{category}}
+                                    {{category.name}}
                                 </span>
                             </a>
                         </li>

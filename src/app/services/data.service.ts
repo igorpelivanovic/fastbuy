@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams, HttpParamsOptions } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { baseUrl } from 'src/environments/environment';
 import { Comments, Product, Products } from '../interfaces/datas';
+import { CategoryOfProducts } from '../interfaces/category.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  getCategories(): Observable<String[]>{
-    return this.http.get<String[]>(`${baseUrl}/products/categories`)
+  getCategories(): Observable<CategoryOfProducts[]>{
+    return this.http.get<CategoryOfProducts[]>(`${baseUrl}/products/categories`)
   }
   getProducts(params: any ): Observable<Products>{
     const paramsHttp: HttpParamsOptions = {fromObject: params} as HttpParamsOptions

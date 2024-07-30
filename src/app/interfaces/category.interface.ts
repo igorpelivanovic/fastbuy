@@ -1,0 +1,1 @@
+export interface CategoryOfProducts extends Record<'slug' | 'name' | 'url', string> {}
